@@ -1,7 +1,8 @@
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { DateValidator } from '../../../../projects/ng-form-validator-builder/src/public-api';
+import { DateValidator } from 'ng-form-validator-builder';
 
 @Component({
     selector: 'app-date-demo',
@@ -10,7 +11,7 @@ import { DateValidator } from '../../../../projects/ng-form-validator-builder/sr
 })
 export class DateDemoComponent implements OnInit {
     dateForm: FormGroup;
-    
+
     constructor() { }
 
     ngOnInit(): void {
@@ -37,3 +38,4 @@ export class DateDemoComponent implements OnInit {
         })
     }
 }
+```
