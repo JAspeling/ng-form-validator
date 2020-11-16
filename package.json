@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "buildLib": "ng build ng-form-validator-builder",
+    "buildDocs": "ng build --prod --baseHref='https://JAspeling.github.io/ng-form-validator/'",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
