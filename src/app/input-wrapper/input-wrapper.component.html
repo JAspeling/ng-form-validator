@@ -1,0 +1,34 @@
+<div class="form-group"
+     [formGroup]="form">
+    <label for="{{id}}_label">{{label}}</label>
+
+    <div class="input-group">
+        <input [formControlName]="name"
+               [name]="name"
+               class="form-control"
+               [id]="id"
+               autocomplete="off"
+               bsDatepicker>
+        <div class="input-group-append">
+            <button class="btn btn-small btn-primary"
+                    (click)="toggleState()">Show state</button>
+        </div>
+    </div>
+    <div *ngIf="form.controls[name].invalid"
+         class="field-validation-error">
+        {{firstError}}
+    </div>
+
+    <div id="collapseBasic"
+         [collapse]="!showState"
+         [isAnimated]="true">
+        <div class="card">
+            <div class="card-header">
+                <p class="h5">State</p>
+            </div>
+            <div class="card-body">
+                <pre>{{state | json}}</pre>
+            </div>
+        </div>
+    </div>
+</div>

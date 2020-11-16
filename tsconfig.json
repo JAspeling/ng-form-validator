@@ -18,8 +18,6 @@
     "paths": {
       "ng-form-validator-builder": [
         "dist/ng-form-validator-builder/ng-form-validator-builder",
-        "dist/ng-form-validator-builder",
-        "dist/ng-form-validator-builder/ng-form-validator-builder",
         "dist/ng-form-validator-builder"
       ]
     }
