@@ -3,3 +3,11 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
 @import '~ngx-bootstrap/datepicker/bs-datepicker.css';
+
+.input-validation-error {
+    border-color: $danger;
+}
+
+.field-validation-error {
+    color: $danger;
+}

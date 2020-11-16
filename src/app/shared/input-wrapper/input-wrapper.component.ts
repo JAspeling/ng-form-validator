@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { getFirstErrorFromControl } from '../../../projects/ng-form-validator-builder/src/lib/form-utils';
-import { Guid } from '../shared/guid';
+
+import {
+    getFirstErrorFromControl,
+    touchedControlHasError,
+} from '../../../../projects/ng-form-validator-builder/src/public-api';
+import { Guid } from '../guid';
 
 @Component({
     selector: 'app-input-wrapper',
@@ -17,19 +21,12 @@ export class InputWrapperComponent implements OnInit {
 
     showState: boolean = false;
 
-    constructor() { }
-
-    ngOnInit(): void {
+    get firstError(): string {
+        return getFirstErrorFromControl(this.formControl);
     }
 
-    get formControl(): AbstractControl {
-        return this.form?.controls[this.name];
-    }
-
-    firstError = getFirstErrorFromControl(this.formControl);
-
-    toggleState(): void {
-        this.showState = !this.showState;
+    get hasError(): boolean {
+        return touchedControlHasError(this.formControl);
     }
 
     get state(): any {
@@ -39,5 +36,18 @@ export class InputWrapperComponent implements OnInit {
             status: this.formControl.status,
             value: this.formControl.value
         }
+    }
+
+    get formControl(): AbstractControl {
+        return this.form?.controls[this.name];
+    }
+
+    constructor() { }
+
+    ngOnInit(): void {
+    }
+
+    toggleState(): void {
+        this.showState = !this.showState;
     }
 }

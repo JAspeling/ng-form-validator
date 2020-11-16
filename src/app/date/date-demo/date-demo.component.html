@@ -1,0 +1,39 @@
+<form [formGroup]="dateForm">
+    <div class="row">
+        <div class="col-6">
+            <app-input-wrapper [form]="dateForm"
+                               [name]="'date1'"
+                               [label]="'Date 1 - No Validation required here'"></app-input-wrapper>
+        </div>
+
+        <div class="col-6">
+            <app-input-wrapper [form]="dateForm"
+                               [name]="'date2'"
+                               [label]="'Date 2 - Requires a valid date'"></app-input-wrapper>
+        </div>
+
+        <div class="col-6">
+            <app-input-wrapper [form]="dateForm"
+                               [name]="'date3'"
+                               [label]="'Date 3 - Cant be in the past'"></app-input-wrapper>
+        </div>
+
+        <div class="col-6">
+            <app-input-wrapper [form]="dateForm"
+                               [name]="'date4'"
+                               [label]="'Date 4 - Must be before a week from now'"></app-input-wrapper>
+        </div>
+
+        <div class="col-6">
+            <app-input-wrapper [form]="dateForm"
+                               [name]="'date5'"
+                               [label]="'Date 5 - Must be after a week from now'"></app-input-wrapper>
+        </div>
+
+        <div class="col-6">
+            <app-input-wrapper [form]="dateForm"
+                               [name]="'date6'"
+                               [label]="'Date 6 - Combined, Between last and next week'"></app-input-wrapper>
+        </div>
+    </div>
+</form>

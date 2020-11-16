@@ -6,15 +6,16 @@
         <input [formControlName]="name"
                [name]="name"
                class="form-control"
+               [class.input-validation-error]="hasError"  
                [id]="id"
                autocomplete="off"
                bsDatepicker>
         <div class="input-group-append">
             <button class="btn btn-small btn-primary"
-                    (click)="toggleState()">Show state</button>
+                    (click)="toggleState()">Toggle state</button>
         </div>
     </div>
-    <div *ngIf="form.controls[name].invalid"
+    <div *ngIf="hasError"
          class="field-validation-error">
         {{firstError}}
     </div>
@@ -23,9 +24,6 @@
          [collapse]="!showState"
          [isAnimated]="true">
         <div class="card">
-            <div class="card-header">
-                <p class="h5">State</p>
-            </div>
             <div class="card-body">
                 <pre>{{state | json}}</pre>
             </div>

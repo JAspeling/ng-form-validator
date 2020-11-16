@@ -27,7 +27,7 @@ export class DateValidationBuilder implements IValidationBuilder {
 
     public isValidDate(errorMessage?: string): DateValidationBuilder {
         errorMessage = errorMessage || 'A valid date value is required';
-        if (!isDate(this.value)) {
+        if (!isDate(this.value) || JSON.stringify(this.value) === "null") {
             this.errors.invalidDate = errorMessage;
         }
         return this;
@@ -43,12 +43,22 @@ export class DateValidationBuilder implements IValidationBuilder {
         return this;
     }
 
-    public isBefore(futureDate: Date, errorMessage?: string): DateValidationBuilder {
+    public isBefore(valuationDate: Date, errorMessage?: string): DateValidationBuilder {
         errorMessage = errorMessage || 'A valid date value is required';
         const date = new Date(this.value);
 
-        if (date > futureDate) {
-            this.errors.exceedsFuture = errorMessage;
+        if (date > valuationDate) {
+            this.errors.exceedsValuationDate = errorMessage;
+        }
+        return this;
+    }
+
+    public isAfter(valuationDate: Date, errorMessage?: string): DateValidationBuilder {
+        errorMessage = errorMessage || 'A valid date value is required';
+        const date = new Date(this.value);
+
+        if (date < valuationDate) {
+            this.errors.precedeValuationDate = errorMessage;
         }
         return this;
     }

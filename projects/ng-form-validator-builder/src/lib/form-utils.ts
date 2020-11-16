@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
+import { AbstractControl, ControlContainer, FormGroup, ValidationErrors } from '@angular/forms';
 import { isNullOrUndefined } from 'util';
 import { isEmptyObject } from './utils';
 
@@ -76,4 +76,12 @@ function assertFormGroup(group: FormGroup, errorKey: string, controlName: string
         return false;
     }
     return true;
+}
+
+export function touchedControlHasError(control: AbstractControl): boolean {
+    if (isNullOrUndefined(control)) {
+        return false;
+    }
+
+    return control.invalid && !control.pending && !control.disabled && control.touched;
 }

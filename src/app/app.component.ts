@@ -8,19 +8,12 @@ import { DateValidator } from '../../projects/ng-form-validator-builder/src/publ
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    dateForm: FormGroup;
 
     ngOnInit(): void {
-        this.initializeDateForm()
+        
     }
 
-    private initializeDateForm() {
-        this.dateForm = new FormBuilder().group({
-            date1: [''],
-            date2: ['', DateValidator.isValid],
-            date3: [null],
-        })
-    }
+   
 
 
 }

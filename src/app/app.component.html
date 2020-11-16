@@ -11,62 +11,16 @@
     <!--                             Date Validation                             -->
     <!-- ----------------------------------------------------------------------- -->
     <p class="h2">Date Validation</p>
-    <form [formGroup]="dateForm">
-        <div class="row">
-            <div class="col-6">
-                <app-input-wrapper [form]="dateForm"
-                                   [name]="'date1'"
-                                   [label]="'Date 1'">
-                    <input bsDatepicker>
-                </app-input-wrapper>
-                <div class="form-group">
-                    <label for="date1">Date 1 (No validation here)</label>
-                    <input [formControlName]="'date1'"
-                           [name]="'date1'"
-                           class="form-control"
-                           id="date1"
-                           bsDatepicker>
-                    <div *ngIf="dateForm.controls['date1'].invalid"
-                         class="field-validation-error">
-                        test
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="date2">Date 2 (Requires a valid date)</label>
-                    <input [formControlName]="'date2'"
-                           [name]="'date2'"
-                           class="form-control"
-                           id="date2">
-                    <div *ngIf="dateForm.controls['date2'].touched && dateForm.controls['date2'].invalid"
-                         class="invalid-feedback d-block">
-                        test
-                    </div>
-                    <pre>Invalid: {{dateForm.controls['date2'].invalid | json}}</pre>
-                </div>
-            </div>
-
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="date3">Date 3</label>
-                    <input [formControlName]="'date3'"
-                           [name]="'date3'"
-                           class="form-control"
-                           id="date3">
-                    <div *ngIf="dateForm.controls['date3'].invalid"
-                         class="field-validation-error">
-                        test
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <pre>{{dateForm.getRawValue() | json}}</pre>
-        </div>
-    </form>
+    <div>
+        <tabset>
+            <tab heading="Date Demo">
+                <app-date-demo></app-date-demo>
+            </tab>
+            <tab heading="Code">
+                <app-date-demo-code></app-date-demo-code>
+            </tab>
+        </tabset>
+    </div>
     <hr>
 
     <p class="h2">String Validation</p>
