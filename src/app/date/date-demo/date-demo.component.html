@@ -1,39 +1,60 @@
 <form [formGroup]="dateForm">
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <app-input-wrapper [form]="dateForm"
                                [name]="'date1'"
-                               [label]="'Date 1 - No Validation required here'"></app-input-wrapper>
+                               [label]="'Date 1 - No Validation required here'"
+                               [markdownSrc]="'assets/date/date1.md'"></app-input-wrapper>
         </div>
 
-        <div class="col-6">
+        <div class="col-12">
             <app-input-wrapper [form]="dateForm"
                                [name]="'date2'"
-                               [label]="'Date 2 - Requires a valid date'"></app-input-wrapper>
+                               [label]="'Date 2 - Requires a valid date'"
+                               [markdownSrc]="'assets/date/date2.md'"
+                               [actions]="date2Actions"></app-input-wrapper>
         </div>
 
-        <div class="col-6">
+        <div class="col-12">
             <app-input-wrapper [form]="dateForm"
                                [name]="'date3'"
-                               [label]="'Date 3 - Cant be in the past'"></app-input-wrapper>
+                               [label]="'Date 3 - Cant be in the past'"
+                               [markdownSrc]="'assets/date/date3.md'"
+                               [actions]="date3Actions"></app-input-wrapper>
         </div>
 
-        <div class="col-6">
+        <div class="col-12">
             <app-input-wrapper [form]="dateForm"
                                [name]="'date4'"
-                               [label]="'Date 4 - Must be before a week from now'"></app-input-wrapper>
+                               [label]="'Date 4 - Must be before a week from now'"
+                               [markdownSrc]="'assets/date/date4.md'"
+                               [actions]="date4Actions"></app-input-wrapper>
         </div>
 
-        <div class="col-6">
+        <div class="col-12">
             <app-input-wrapper [form]="dateForm"
                                [name]="'date5'"
-                               [label]="'Date 5 - Must be after a week from now'"></app-input-wrapper>
+                               [label]="'Date 5 - Must be after a week from now'"
+                               [markdownSrc]="'assets/date/date5.md'"
+                               [actions]="date5Actions"></app-input-wrapper>
         </div>
 
-        <div class="col-6">
+        <div class="col-12">
             <app-input-wrapper [form]="dateForm"
                                [name]="'date6'"
-                               [label]="'Date 6 - Combined, Between last and next week'"></app-input-wrapper>
+                               [label]="'Date 6 - Combined, Between last and next week'"
+                               [markdownSrc]="'assets/date/date6.md'"
+                               [actions]="date6Actions"></app-input-wrapper>
+        </div>
+
+        <hr>
+
+        <div class="col-12">
+            <app-input-wrapper [form]="dateForm"
+                               [name]="'date7'"
+                               [label]="'Date 7 - Custom error message'"
+                               [markdownSrc]="'assets/date/date7.md'"
+                               [actions]="date7Actions"></app-input-wrapper>
         </div>
     </div>
 </form>

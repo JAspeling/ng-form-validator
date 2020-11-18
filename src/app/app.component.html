@@ -7,35 +7,34 @@
 
     <hr>
 
-    <!-- ----------------------------------------------------------------------- -->
-    <!--                             Date Validation                             -->
-    <!-- ----------------------------------------------------------------------- -->
-    <p class="h2">Date Validation</p>
-    <div>
-        <tabset>
-            <tab heading="Date Demo">
-                <div class="demo">
-                    <app-date-demo></app-date-demo>
-                </div>
-            </tab>
-            <tab heading="Code">
-                <div class="demo">
-                    <app-date-demo-code></app-date-demo-code>
-                </div>
-            </tab>
-        </tabset>
-    </div>
-    <hr>
 
-    <p class="h2">String Validation</p>
-        
-    <hr>
-
-    <p class="h2">Number Validation</p>
-
-    <hr>
-
-    <p class="h2">Custom Validation</p>
-
-    <hr>
+    <accordion [isAnimated]="true">
+        <accordion-group [isOpen]="true"
+                         heading="General Utilities">
+            <p>Some content</p>
+        </accordion-group>
+        <accordion-group heading="Date Validation">
+            <tabset>
+                <tab heading="Date Demo">
+                    <div class="demo">
+                        <app-date-demo></app-date-demo>
+                    </div>
+                </tab>
+                <tab heading="Code">
+                    <div class="demo">
+                        <app-date-demo-code></app-date-demo-code>
+                    </div>
+                </tab>
+            </tabset>
+        </accordion-group>
+        <accordion-group heading="String Validation">
+            <p>Some content</p>
+        </accordion-group>
+        <accordion-group heading="Numeric Validation">
+            <p>Some content</p>
+        </accordion-group>
+        <accordion-group heading="Custom Validation">
+            <p>Some content</p>
+        </accordion-group>
+    </accordion>
 </div>

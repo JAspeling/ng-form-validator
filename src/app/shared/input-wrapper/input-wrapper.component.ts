@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
+import { faChevronDown, faChevronUp, faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 import {
     getFirstErrorFromControl,
     touchedControlHasError,
-} from '../../../../projects/ng-form-validator-builder/src/public-api';
+} from '@validator-builder';
+import { MarkdownService } from 'ngx-markdown';
 import { Guid } from '../guid';
 
 @Component({
@@ -13,11 +15,17 @@ import { Guid } from '../guid';
     styleUrls: ['./input-wrapper.component.scss']
 })
 export class InputWrapperComponent implements OnInit {
+    faChevronDown = faChevronDown;
+    faChevronUp = faChevronUp;
+    
     id: string = Guid.newGuid();
 
     @Input() form: FormGroup;
     @Input() name: string;
     @Input() label: string;
+    @Input() markdownSrc: string;
+
+    @Input() actions: { action: () => void, icon: string, info: string }[] = [];
 
     showState: boolean = false;
 
@@ -42,12 +50,16 @@ export class InputWrapperComponent implements OnInit {
         return this.form?.controls[this.name];
     }
 
-    constructor() { }
+    constructor(private readonly markdown: MarkdownService) { }
 
     ngOnInit(): void {
     }
 
     toggleState(): void {
         this.showState = !this.showState;
+    }
+
+    updateState(): void {
+        this.markdown.highlight();
     }
 }

@@ -3,16 +3,32 @@
     <label for="{{id}}_label">{{label}}</label>
 
     <div class="input-group">
-        <input [formControlName]="name"
-               [name]="name"
-               class="form-control"
-               [class.input-validation-error]="hasError"  
-               [id]="id"
+        <input class="form-control"
                autocomplete="off"
-               bsDatepicker>
+               bsDatepicker
+               (ngModelChange)="updateState()"
+               [formControlName]="name"
+               [name]="name"
+               [class.input-validation-error]="hasError"
+               [id]="id">
         <div class="input-group-append">
-            <button class="btn btn-small btn-primary"
-                    (click)="toggleState()">Toggle state</button>
+            <div class="btn-group"
+                 role="group"
+                 aria-label="Basic example">
+                <button style="min-width: 40px;"
+                        class="btn btn-small btn-primary"
+                        (click)="toggleState()">
+                    <fa-icon *ngIf="!showState"
+                             [icon]="faChevronDown"></fa-icon>
+                    <fa-icon *ngIf="showState"
+                             [icon]="faChevronUp"></fa-icon>
+                </button>
+                <button *ngFor="let action of actions"
+                        style="min-width: 40px;"
+                        class="btn btn-small btn-primary"
+                        [title]="action.info"
+                        (click)="action.action()"><fa-icon [icon]="action.icon"></fa-icon></button>
+            </div>
         </div>
     </div>
     <div *ngIf="hasError"
@@ -25,7 +41,8 @@
          [isAnimated]="true">
         <div class="card">
             <div class="card-body">
-                <pre>{{state | json}}</pre>
+                <markdown [data]="state | json | language: 'json'"></markdown>
+                <markdown [src]="markdownSrc"></markdown>
             </div>
         </div>
     </div>

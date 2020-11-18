@@ -2,11 +2,15 @@
 
 @import '~bootstrap/scss/bootstrap.scss';
 
+// @import '~font-awesome/scss/font-awesome.scss';
+// @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+
 @import '~ngx-bootstrap/datepicker/bs-datepicker.css';
 
+// @import '~prismjs/themes/prism.css';
+@import '~prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 @import './assets/styles/prism/vscode';
-@import '~prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 .demo {
     border-left: 5px solid $cyan;
@@ -15,6 +19,15 @@
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
     padding: 1rem 2rem 1rem 2rem;
+}
+
+blockquote {
+    background: rgba(10,133,255,.14);
+    border-left: 4px solid #06c;
+    border-radius: 4px;
+    color: #666;
+    margin: 20px 0;
+    padding: 1px 20px;
 }
 
 .input-validation-error {
