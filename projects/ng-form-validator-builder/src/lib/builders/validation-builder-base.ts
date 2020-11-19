@@ -42,13 +42,15 @@ export class ValidationBuilderBase implements IValidationBuilder {
         return this;
     }
 
-    public isRequired(): IValidationBuilder {
+    public isRequired(errorMessage?: string): IValidationBuilder {
         if (this.ignore) { return this; }
+
+        errorMessage = errorMessage || 'Required Field';
 
         const validationResult = Validators.required(this.baseControl);
 
         if ((!isNullOrUndefined(validationResult) && !isNullOrUndefined(validationResult.required))) {
-            this.baseErrors.required = 'Required Field';
+            this.baseErrors.required = errorMessage;
         }
 
         return this;

@@ -20,7 +20,7 @@ export interface IValidationBuilder {
     /**
      * Marks the Form Control as required.
      */
-    isRequired(): IValidationBuilder;
+    isRequired(errorMessage?: string): IValidationBuilder;
 
     /**
      * Ignores all further validation in the chain when the callback function is satisfied.
