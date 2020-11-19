@@ -9,11 +9,15 @@
 
 
     <accordion [isAnimated]="true">
-        <accordion-group [isOpen]="true"
-                         heading="General Utilities">
+        <accordion-group
+            [isOpen]="true"
+            heading="General Utilities">
             <p>Some content</p>
         </accordion-group>
-        <accordion-group heading="Date Validation">
+
+        <accordion-group
+            heading="Date Validation"
+            [isOpen]="true">
             <tabset>
                 <tab heading="Date Demo">
                     <div class="demo">
@@ -27,14 +31,18 @@
                 </tab>
             </tabset>
         </accordion-group>
-        <accordion-group heading="String Validation">
+
+        <accordion-group heading="String Validation" [isOpen]="true">
             <p>Some content</p>
         </accordion-group>
-        <accordion-group heading="Numeric Validation">
+
+        <accordion-group heading="Numeric Validation" [isOpen]="true">
             <p>Some content</p>
         </accordion-group>
-        <accordion-group heading="Custom Validation">
+
+        <accordion-group heading="Custom Validation" [isOpen]="true">
             <p>Some content</p>
         </accordion-group>
+
     </accordion>
 </div>
