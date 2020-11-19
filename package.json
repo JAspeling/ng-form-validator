@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "buildLib": "ng build ng-form-validator-builder --prod && npm run buildDocs",
+    "buildLib": "ng build ng-form-validator-builder --prod",
     "publishLib": "npm run buildLib && npm publish ng-form-validator-builder --access public",
     "buildDocs": "ng build --prod --baseHref=https://JAspeling.github.io/ng-form-validator/",
     "start": "ng serve",
