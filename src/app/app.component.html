@@ -33,7 +33,18 @@
         </accordion-group>
 
         <accordion-group heading="String Validation" [isOpen]="true">
-            <p>Some content</p>
+            <tabset>
+                <tab heading="String demo">
+                    <div class="demo">
+                        <app-string-demo></app-string-demo>
+                    </div>
+                </tab>
+                <tab heading="Code">
+                    <div class="demo">
+                        <app-string-demo-code></app-string-demo-code>
+                    </div>
+                </tab>
+            </tabset>
         </accordion-group>
 
         <accordion-group heading="Numeric Validation" [isOpen]="true">

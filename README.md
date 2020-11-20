@@ -1,27 +1,49 @@
-# NgFormValidor
+# Validation Builder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
+Built with one purpose - Make Reactive form validation in Angular easier to use.
 
-## Development server
+- [Validation Builder](#validation-builder)
+  - [- Extending validators](#--extending-validators)
+- [Getting started](#getting-started)
+  - [Install the library](#install-the-library)
+  - [Start using the validators](#start-using-the-validators)
+- [Combining Validators](#combining-validators)
+- [How it works behind the scenes](#how-it-works-behind-the-scenes)
+- [Extending validators](#extending-validators)
+---
+# Getting started
+Take a look at [the live demo](https://jaspeling.github.io/ng-form-validator/) to play around with the validators
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Install the library
 
-## Code scaffolding
+```powershell
+npm i ng-form-validator-builder
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Start using the validators
 
-## Build
+You can add validators using the formBuilder to create a form:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```typescript
+const nextWeek: Date = new Date();
+nextWeek.setDate(new Date().getDate() + 7);
 
-## Running unit tests
+const form = new FormBuilder().group({
+    someDate: [new Date(), DateValidator.isBefore(nextWeek),
+    anotherDate: [new Date(), DateValidator.isBefore(nextWeek, 'With a custom error message'),
+});
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
+# Combining Validators
+TODO: Add documentation here
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+# How it works behind the scenes
+TODO: Add documentation on how the validators work with the builders.
 
-## Further help
+---
+# Extending validators
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+TODO: Add documentation on extending validation builders to create custom validators and extend on existing validators.

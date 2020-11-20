@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputWrapperComponent } from './input-wrapper.component';
+import { StringDemoCodeComponent } from './string-demo-code.component';
 
-describe('InputWrapperComponent', () => {
-  let component: InputWrapperComponent;
-  let fixture: ComponentFixture<InputWrapperComponent>;
+describe('StringDemoCodeComponent', () => {
+  let component: StringDemoCodeComponent;
+  let fixture: ComponentFixture<StringDemoCodeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputWrapperComponent ]
+      declarations: [ StringDemoCodeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputWrapperComponent);
+    fixture = TestBed.createComponent(StringDemoCodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

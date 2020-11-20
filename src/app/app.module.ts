@@ -19,6 +19,9 @@ import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import { AppComponent } from './app.component';
 import { DateModule } from './date/date.module';
 import { SharedModule } from './shared/shared.module';
+import { StringDemoComponent } from './string/string-demo/string-demo.component';
+import { StringDemoCodeComponent } from './string/string-demo-code/string-demo-code.component';
+import { StringModule } from './string/string.module';
 
 // function that returns `MarkedOptions` with renderer override
 export function markedOptionsFactory(): MarkedOptions {
@@ -61,7 +64,8 @@ export function markedOptionsFactory(): MarkedOptions {
         ReactiveFormsModule,
 
         SharedModule,
-        DateModule
+        DateModule,
+        StringModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

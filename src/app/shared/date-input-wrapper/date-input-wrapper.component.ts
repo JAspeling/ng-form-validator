@@ -10,11 +10,10 @@ import { MarkdownService } from 'ngx-markdown';
 import { Guid } from '../guid';
 
 @Component({
-    selector: 'app-input-wrapper',
-    templateUrl: './input-wrapper.component.html',
-    styleUrls: ['./input-wrapper.component.scss']
+    selector: 'app-date-input-wrapper',
+    templateUrl: './date-input-wrapper.component.html'
 })
-export class InputWrapperComponent implements OnInit {
+export class DateInputWrapperComponent implements OnInit {
     faChevronDown = faChevronDown;
     faChevronUp = faChevronUp;
     

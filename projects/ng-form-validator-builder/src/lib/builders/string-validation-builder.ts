@@ -19,8 +19,9 @@ export class StringValidationBuilder implements IValidationBuilder {
     }
     constructor(private readonly builder: ValidationBuilder) { }
 
-    public minLengthAllowed(min: number): StringValidationBuilder {
+    public minLengthAllowed(min: number, errorMessage?: string): StringValidationBuilder {
         if (this.builder.ignore || isNullOrUndefined(this.value)) { return this; }
+        errorMessage = errorMessage || `Min length of ${min} characters`;
 
         if (this.value.length < min) {
             this.errors.minLength = `Min length of ${min} characters`;
@@ -29,8 +30,9 @@ export class StringValidationBuilder implements IValidationBuilder {
         return this;
     }
 
-    public maxLengthAllowed(max: number): StringValidationBuilder {
+    public maxLengthAllowed(max: number, errorMessage?: string): StringValidationBuilder {
         if (this.builder.ignore || isNullOrUndefined(this.value)) { return this; }
+        errorMessage = errorMessage || `Max length of ${max} characters`;
 
         if (this.value.length > max) {
             this.errors.maxLength = `Max length of ${max} characters`;
@@ -39,8 +41,9 @@ export class StringValidationBuilder implements IValidationBuilder {
         return this;
     }
 
-    public range(lowerRange: number, upperRange: number): StringValidationBuilder {
+    public range(lowerRange: number, upperRange: number, errorMessage?: string): StringValidationBuilder {
         if (this.builder.ignore || isNullOrUndefined(this.value)) { return this; }
+        errorMessage = errorMessage || `Require between ${lowerRange} and ${upperRange} characters`;
 
         if (this.value.length < lowerRange || this.value.length > upperRange) {
             this.errors.invalidRange = `Require between ${lowerRange} and ${upperRange} characters`;
@@ -52,22 +55,13 @@ export class StringValidationBuilder implements IValidationBuilder {
         if (this.builder.ignore || isNullOrUndefined(this.value)) { return this; }
 
         errorMessage = errorMessage || 'Invalid pattern';
-        let matches: RegExpExecArray;
-        const errors: string[] = [];
 
-        while ((matches = regexString.exec(this.value)) !== null) {
-            // This is necessary to avoid infinite loops with zero-width matches
-            if (matches.index === regexString.lastIndex) {
-                regexString.lastIndex++;
+        if (typeof this.value === 'string') {
+            if (isNullOrUndefined(this.value.match(regexString))) {
+                this.errors.invalidPattern = errorMessage;
             }
-
-            matches.forEach((match, groupIndex) => {
-                errors.push(match);
-            });
-        }
-
-        if (!isNullOrUndefined(errors) && errors.length > 0) {
-            this.errors.invalidPattern = errorMessage;
+        } else {
+            this.errors.invalidPattern = 'Invalid object type';
         }
 
         return this;

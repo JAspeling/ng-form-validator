@@ -17,8 +17,7 @@ export class DateValidator {
             return new ValidationBuilder(control)
                 .date
                 .isValidDate()
-                .isNotInThePast()
-                .withMessage(errorMessage, 'dateIsInThePast')
+                .isNotInThePast(errorMessage)
                 .build();
         }
     }

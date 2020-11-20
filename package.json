@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "buildLib": "ng build ng-form-validator-builder --prod",
-    "publishLib": "npm run buildLib && npm publish ng-form-validator-builder --access public",
+    "buildLib": "cd projects/ng-form-validator-builder && npm version patch && cd ../.. && ng build ng-form-validator-builder --prod",
+    "releaseLib": "npm run buildLib && cp README.md dist/ng-form-validator-builder/ && cd dist/ng-form-validator-builder && npm publish --access public",
     "buildDocs": "ng build --prod --baseHref=https://JAspeling.github.io/ng-form-validator/",
     "start": "ng serve",
     "build": "ng build",
