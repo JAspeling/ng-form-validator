@@ -26,7 +26,7 @@ export class NumericDemoComponent implements OnInit {
             lessThan: ['', [NumericValidator.lessThan(50, 'Expected less than 50')]],
             lessThanOrEqualTo: ['', [NumericValidator.lessThanOrEqual(100, 'Expected less than or equal to 100')]],
             greaterThan: ['', [NumericValidator.greaterThan( 21, 'Expected greater than 21')]],
-            greaterThanOrEqualTo: ['', [NumericValidator.greaterThanOrEqualTo(18, 'Expected greater than or equal to 18')]],
+            greaterThanOrEqualTo: ['', [NumericValidator.greaterThanOrEqual(18, 'Expected greater than or equal to 18')]],
 
             lessThanMax: [ '', NumericValidator.lessThanMax(`Must be less than max allowed integer (9000000000000000)`)],
             isInteger: [ 55, NumericValidator.isInteger(`Expected an integer`)],
