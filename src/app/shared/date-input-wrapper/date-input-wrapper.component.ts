@@ -16,7 +16,7 @@ import { Guid } from '../guid';
 export class DateInputWrapperComponent implements OnInit {
     faChevronDown = faChevronDown;
     faChevronUp = faChevronUp;
-    
+
     id: string = Guid.newGuid();
 
     @Input() form: FormGroup;
@@ -27,6 +27,9 @@ export class DateInputWrapperComponent implements OnInit {
     @Input() actions: { action: () => void, icon: string, info: string }[] = [];
 
     showState: boolean = false;
+
+    constructor(private readonly markdown: MarkdownService) {
+    }
 
     get firstError(): string {
         return getFirstErrorFromControl(this.formControl);
@@ -48,8 +51,6 @@ export class DateInputWrapperComponent implements OnInit {
     get formControl(): AbstractControl {
         return this.form?.controls[this.name];
     }
-
-    constructor(private readonly markdown: MarkdownService) { }
 
     ngOnInit(): void {
     }

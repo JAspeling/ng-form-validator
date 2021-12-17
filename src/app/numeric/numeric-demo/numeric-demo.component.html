@@ -1,0 +1,41 @@
+<form [formGroup]="form">
+    <div class="row">
+        <div class="col-12">
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'greaterThanZero'"
+                                    [label]="'Greater than zero'"></app-text-input-wrapper>
+
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'greaterThanOrEqualToZero'"
+                                    [label]="'Greater than or equal to zero'"></app-text-input-wrapper>
+
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'range'"
+                                    [label]="'Between -100 and 100'"></app-text-input-wrapper>
+
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'lessThan'"
+                                    [label]="'Less than 50'"></app-text-input-wrapper>
+
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'lessThanOrEqualTo'"
+                                    [label]="'Less than or equal to 100'"></app-text-input-wrapper>
+
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'greaterThan'"
+                                    [label]="'Greater than 21'"></app-text-input-wrapper>
+
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'greaterThanOrEqualTo'"
+                                    [label]="'Greater than or equal to 18'"></app-text-input-wrapper>
+
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'lessThanMax'"
+                                    [label]="'Less than max (9000000000000000)'"></app-text-input-wrapper>
+
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'isInteger'"
+                                    [label]="'Is an integer'"></app-text-input-wrapper>
+        </div>
+    </div>
+</form>

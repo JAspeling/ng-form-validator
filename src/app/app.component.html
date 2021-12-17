@@ -1,59 +1,106 @@
-<div class="container">
-    <h1 class="display-4">Form Validation Demo</h1>
+<div class="container d-flex">
+    <div class="content flex-grow-1" #container>
+        <h1 class="display-4">Form Validation Demo</h1>
 
-    <p class="lead">
-        Some examples about how the custom validation builder works, how to dynamically switch out/change validators and how to implement custom builders to extend existing functionality.
-    </p>
+        <p class="lead">
+            Some examples about how the custom validation builder works, how to dynamically switch out/change validators
+            and
+            how to implement custom builders to extend existing functionality.
+        </p>
 
-    <hr>
+        <hr>
 
+        <h4 id="general-guidelines">General guidelines</h4>
+        <hr>
 
-    <accordion [isAnimated]="true">
-        <accordion-group
-            [isOpen]="true"
-            heading="General Utilities">
-            <p>Some content</p>
-        </accordion-group>
+        <p>To display the form controls, I am using template binding on the forms and displaying the error like the following:</p>
 
-        <accordion-group
-            heading="Date Validation"
-            [isOpen]="true">
-            <tabset>
-                <tab heading="Date Demo">
-                    <div class="demo">
-                        <app-date-demo></app-date-demo>
-                    </div>
-                </tab>
-                <tab heading="Code">
-                    <div class="demo">
-                        <app-date-demo-code></app-date-demo-code>
-                    </div>
-                </tab>
-            </tabset>
-        </accordion-group>
+        <markdown ngPreserveWhitespaces
+                  [src]="'assets/general/form-binding.md'"></markdown>
 
-        <accordion-group heading="String Validation" [isOpen]="true">
-            <tabset>
-                <tab heading="String demo">
-                    <div class="demo">
-                        <app-string-demo></app-string-demo>
-                    </div>
-                </tab>
-                <tab heading="Code">
-                    <div class="demo">
-                        <app-string-demo-code></app-string-demo-code>
-                    </div>
-                </tab>
-            </tabset>
-        </accordion-group>
+        <h4 id="utility-functions">Utility functions</h4>
+        <hr>
+        <markdown ngPreserveWhitespaces
+                  [src]="'assets/general/utilities.md'"></markdown>
 
-        <accordion-group heading="Numeric Validation" [isOpen]="true">
-            <p>Some content</p>
-        </accordion-group>
+        <h1 id="date-validation">Date Validation</h1>
+        <tabset>
+            <tab heading="Date Demo">
+                <div class="demo">
+                    <app-date-demo></app-date-demo>
+                </div>
+            </tab>
+            <tab heading="Code">
+                <div class="demo">
+                    <app-date-demo-code></app-date-demo-code>
+                </div>
+            </tab>
+        </tabset>
 
-        <accordion-group heading="Custom Validation" [isOpen]="true">
-            <p>Some content</p>
-        </accordion-group>
+        <h1 id="string-validation">String Validation</h1>
+        <tabset>
+            <tab heading="String demo">
+                <div class="demo">
+                    <app-string-demo></app-string-demo>
+                </div>
+            </tab>
+            <tab heading="Code">
+                <div class="demo">
+                    <app-string-demo-code></app-string-demo-code>
+                </div>
+            </tab>
+        </tabset>
 
-    </accordion>
+        <h1 id="numeric-validation">Numeric Validation</h1>
+        <tabset>
+            <tab heading="String demo">
+                <div class="demo">
+                    <app-numeric-demo></app-numeric-demo>
+                </div>
+            </tab>
+            <tab heading="Code">
+                <div class="demo">
+                    <app-numeric-demo-code></app-numeric-demo-code>
+                </div>
+            </tab>
+        </tabset>
+
+        <h1 id="custom-validation">Custom Validation</h1>
+        <tabset>
+            <tab heading="String demo">
+                <div class="demo">
+                </div>
+            </tab>
+            <tab heading="Code">
+                <div class="demo">
+                </div>
+            </tab>
+        </tabset>
+
+        <h1 id="extending-builders">Extending validators</h1>
+        <tabset>
+            <tab heading="String demo">
+                <div class="demo">
+                </div>
+            </tab>
+            <tab heading="Code">
+                <div class="demo">
+                </div>
+            </tab>
+        </tabset>
+
+    </div>
+
+    <nav id="gumshoe-nav">
+        <div class="content">
+            <h6>On this page</h6>
+            <hr class="mt-1">
+            <ul>
+                <li *ngFor="let heading of headings">
+                    <a [href]="'#' + heading.id">{{heading.text}}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
 </div>

@@ -19,9 +19,9 @@ import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import { AppComponent } from './app.component';
 import { DateModule } from './date/date.module';
 import { SharedModule } from './shared/shared.module';
-import { StringDemoComponent } from './string/string-demo/string-demo.component';
-import { StringDemoCodeComponent } from './string/string-demo-code/string-demo-code.component';
 import { StringModule } from './string/string.module';
+import { GumshoeDirective, ScrollSpyDirective } from './shared/scrollspy.directive';
+import { NumericModule } from './numeric/numeric.module';
 
 // function that returns `MarkedOptions` with renderer override
 export function markedOptionsFactory(): MarkedOptions {
@@ -32,7 +32,7 @@ export function markedOptionsFactory(): MarkedOptions {
     };
 
     return {
-        renderer: renderer,
+        renderer,
         gfm: true,
         breaks: false,
         pedantic: false,
@@ -44,6 +44,8 @@ export function markedOptionsFactory(): MarkedOptions {
 @NgModule({
     declarations: [
         AppComponent,
+        ScrollSpyDirective,
+        GumshoeDirective
     ],
     imports: [
         BrowserModule,
@@ -66,6 +68,7 @@ export function markedOptionsFactory(): MarkedOptions {
         SharedModule,
         DateModule,
         StringModule,
+        NumericModule
     ],
     providers: [],
     bootstrap: [AppComponent]

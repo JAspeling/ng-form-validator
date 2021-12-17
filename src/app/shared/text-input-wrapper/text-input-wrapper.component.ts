@@ -6,7 +6,7 @@ import { MarkdownService } from 'ngx-markdown';
 import {
     getFirstErrorFromControl,
     touchedControlHasError,
-} from '../../../../projects/ng-form-validator-builder/src/public-api';
+} from '@validator-builder';
 import { Guid } from '../guid';
 
 // import { getFirstErrorFromControl, touchedControlHasError } from '@validator-builder';
@@ -43,7 +43,7 @@ export class TextInputWrapperComponent implements OnInit {
             errors: this.formControl.errors,
             status: this.formControl.status,
             value: this.formControl.value
-        }
+        };
     }
 
     get formControl(): AbstractControl {

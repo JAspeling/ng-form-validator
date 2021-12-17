@@ -25,10 +25,7 @@
                         "aot": true,
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
-                            "src/styles.scss",
-                            "src/scss/prism-theme.scss",
-                            "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css",
-                            "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
+                            "src/styles.scss"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",

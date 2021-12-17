@@ -24,7 +24,7 @@ export class StringValidationBuilder implements IValidationBuilder {
         errorMessage = errorMessage || `Min length of ${min} characters`;
 
         if (this.value.length < min) {
-            this.errors.minLength = `Min length of ${min} characters`;
+            this.errors.minLength = errorMessage;
         }
 
         return this;
@@ -35,7 +35,7 @@ export class StringValidationBuilder implements IValidationBuilder {
         errorMessage = errorMessage || `Max length of ${max} characters`;
 
         if (this.value.length > max) {
-            this.errors.maxLength = `Max length of ${max} characters`;
+            this.errors.maxLength = errorMessage;
         }
 
         return this;
@@ -46,7 +46,7 @@ export class StringValidationBuilder implements IValidationBuilder {
         errorMessage = errorMessage || `Require between ${lowerRange} and ${upperRange} characters`;
 
         if (this.value.length < lowerRange || this.value.length > upperRange) {
-            this.errors.invalidRange = `Require between ${lowerRange} and ${upperRange} characters`;
+            this.errors.invalidRange = errorMessage;
         }
         return this;
     }

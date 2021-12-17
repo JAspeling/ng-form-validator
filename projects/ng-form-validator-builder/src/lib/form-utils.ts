@@ -9,7 +9,7 @@ import { isEmptyObject } from './utils';
 
 /**
  * Gets the first error object from a control if it contains any errors, otherwise return null.
- * @param control The AbstractControl to check for errors 
+ * @param control The AbstractControl to check for errors
  */
 export function getFirstErrorFromControl(control: AbstractControl): string {
     if (isNullOrUndefined(control) || isNullOrUndefined(control.errors)) {
@@ -49,28 +49,8 @@ export function addErrorsToControl(control: AbstractControl, errors: ValidationE
 
     for (const key in errors) {
         if (errors.hasOwnProperty(key)) {
-            addErrorToControl(control, key, errors[key]);
+            addError(control, key, errors[key]);
         }
-    }
-}
-
-/**
- * Adds a single error to a form control
- * @param control The control on which to add the error
- * @param key The error key (property) that will be added to the control
- * @param error The string describing the error.
- */
-export function addErrorToControl(control: AbstractControl, key: string, error: string): void {
-    if (!assertControl(control, key, true)) {
-        return;
-    }
-
-    if (control.errors) {
-        control.errors[key] = error;
-    } else {
-        const validationError: ValidationErrors = {};
-        validationError[key] = error;
-        control.setErrors(validationError);
     }
 }
 

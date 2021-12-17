@@ -37,14 +37,14 @@ export class NumericValidationBuilder implements IValidationBuilder {
         return this;
     }
 
-    public isWholeNumber(errorMessage?: string): NumericValidationBuilder {
+    public isInteger(errorMessage?: string): NumericValidationBuilder {
         if (this.builder.ignore) {
             return this;
         }
 
         errorMessage = errorMessage || 'Invalid input';
 
-        if (!Number.isInteger(this.value)) {
+        if (!Number.isInteger(+this.value)) {
             this.errors.invalidNumber = errorMessage;
         }
 

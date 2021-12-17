@@ -10,7 +10,94 @@
 // @import '~prismjs/themes/prism.css';
 @import '~prismjs/plugins/line-numbers/prism-line-numbers.css';
 
-@import './assets/styles/prism/vscode';
+//@import './assets/styles/prism/vscode';
+@import './assets/styles/prism/vs';
+
+html {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+$gumshoe-width: 200px;
+
+@include media-breakpoint-up(lg) {
+    #gumshoe-nav {
+        display: block!important;
+    }
+}
+
+#gumshoe-nav {
+    display: none;
+    margin-left: 1rem;
+    position: sticky;
+    align-self: flex-start;
+
+    right: 0;
+    top: 2rem;
+    margin-top: 2rem;
+
+    .content {
+        overflow: hidden;
+        padding-left: 3px;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            width: $gumshoe-width;
+            border-left: 1px solid #80808026;
+
+            li {
+                position: relative;
+                transition: all .3s;
+                padding-left: 5px;
+                border-radius: 3px;
+                border-left: solid transparent;
+                left: -3px;
+
+                &:hover {
+                    &::before {
+                        left: -4px;
+                    }
+                }
+
+                &.active {
+                    border-left-color: #17a2b8;
+                }
+
+                a {
+                    color: #717171;
+                    text-decoration: none;
+
+                }
+
+                &:before {
+                    transition: left ease-out .2s;
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    background: #17a2b821;
+                    border-left: 4px solid #17a2b8;
+                    border-radius: 3px;
+                    left: -#{$gumshoe-width};
+                    z-index: -1;
+                }
+            }
+        }
+    }
+
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1rem;
+}
+
+h1 {
+    border-bottom: 1px solid #80808026;
+    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+}
 
 .demo {
     border-left: 5px solid $cyan;
@@ -22,12 +109,13 @@
 }
 
 blockquote {
-    background: rgba(10,133,255,.14);
+    background: rgba(10, 133, 255, .14);
     border-left: 4px solid #06c;
     border-radius: 4px;
     color: #666;
     margin: 20px 0;
     padding: 1px 20px;
+    font-size: 1rem !important;
 }
 
 accordion-group {

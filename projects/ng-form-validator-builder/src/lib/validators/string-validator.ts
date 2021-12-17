@@ -3,11 +3,11 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { ValidationBuilder } from '../builders/validation-builder';
 
 export class StringValidator {
-    public static range(lowerRange: number, upperRange: number): ValidatorFn {
+    public static range(lowerRange: number, upperRange: number, errorMessage?: string): ValidatorFn {
         return (control: FormControl): ValidationErrors => {
             return new ValidationBuilder(control)
                 .string
-                .range(lowerRange, upperRange)
+                .range(lowerRange, upperRange, errorMessage)
                 .build();
         };
     }
@@ -16,7 +16,7 @@ export class StringValidator {
         return (control: FormControl): ValidationErrors => {
             return new ValidationBuilder(control)
                 .string
-                .maxLengthAllowed(max)
+                .maxLengthAllowed(max, errorMessage)
                 .build();
         };
     }
@@ -36,7 +36,7 @@ export class StringValidator {
                 .string
                 .regex(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, errorMessage)
                 .build();
-        }
+        };
     }
 
     public static regex(regex: RegExp, errorMessage?: string): ValidatorFn {
