@@ -7,4 +7,5 @@ export * from './lib/validators/generic-validator';
 export * from './lib/validators/numeric-validator';
 export * from './lib/validators/percentage-validator';
 export * from './lib/validators/string-validator';
+export * from './lib/builders/validation-builder';
 export * from './lib/form-utils';

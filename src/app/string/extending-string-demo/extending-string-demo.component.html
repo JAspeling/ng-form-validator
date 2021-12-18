@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+    <div class="row">
+        <div class="col-12">
+            <p>Current password: <em>{{password}}</em></p>
+
+            <app-text-input-wrapper [form]="form"
+                                    [name]="'password'"
+                                    [label]="'Cannot be the same as \'' + password + '\' (also complex)'"></app-text-input-wrapper>
+
+        </div>
+    </div>
+</form>

@@ -22,7 +22,34 @@ $gumshoe-width: 200px;
 
 @include media-breakpoint-up(lg) {
     #gumshoe-nav {
-        display: block!important;
+        display: block !important;
+    }
+}
+markdown > * {
+    max-width: 576px;
+}
+
+@include media-breakpoint-up(sm) {
+    markdown > * {
+        max-width: 576px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    markdown > * {
+        max-width: calc(768px);
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    markdown > * {
+        max-width: calc(992px - #{ $gumshoe-width });
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    markdown > * {
+        max-width: calc(1200px - #{ $gumshoe-width });
     }
 }
 

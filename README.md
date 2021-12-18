@@ -31,19 +31,16 @@ nextWeek.setDate(new Date().getDate() + 7);
 const form = new FormBuilder().group({
     someDate: [new Date(), DateValidator.isBefore(nextWeek),
     anotherDate: [new Date(), DateValidator.isBefore(nextWeek, 'With a custom error message'),
+    clientName: ['', StringValidator.maxLengthAllowed('25', 'Name is too long!')],
+    email: ['', [
+        GenericValidator.isRequired('Email is required'),
+        stringValidator.email('Please provide a valid email address :)')
+        ]
+    ],
+    age: [0, NumericValidator.greaterThan(18, 'You need to be older than 18!')
 });
 ```
 
 ---
-# Combining Validators
-TODO: Add documentation here
-
----
-
-# How it works behind the scenes
-TODO: Add documentation on how the validators work with the builders.
-
----
-# Extending validators
-
-TODO: Add documentation on extending validation builders to create custom validators and extend on existing validators.
+# More examples
+See [the live demo](https://jaspeling.github.io/ng-form-validator/) for informaion on using the validators

@@ -5,13 +5,17 @@ import { StringDemoCodeComponent } from './string-demo-code/string-demo-code.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 import { SharedModule } from '../shared/shared.module';
+import { ExtendingStringDemoComponent } from './extending-string-demo/extending-string-demo.component';
+import { ExtendingStringDemoCodeComponent } from './extending-string-demo-code/extending-string-demo-code.component';
 
 
 
 @NgModule({
     declarations: [
         StringDemoComponent,
-        StringDemoCodeComponent
+        StringDemoCodeComponent,
+        ExtendingStringDemoComponent,
+        ExtendingStringDemoCodeComponent
     ],
     imports: [
         CommonModule,
@@ -25,7 +29,9 @@ import { SharedModule } from '../shared/shared.module';
     ],
     exports: [
         StringDemoComponent,
-        StringDemoCodeComponent
+        StringDemoCodeComponent,
+        ExtendingStringDemoComponent,
+        ExtendingStringDemoCodeComponent
     ]
 })
 export class StringModule { }

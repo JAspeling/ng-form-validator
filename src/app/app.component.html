@@ -65,30 +65,24 @@
             </tab>
         </tabset>
 
-        <h1 id="custom-validation">Custom Validation</h1>
-        <tabset>
-            <tab heading="String demo">
-                <div class="demo">
-                </div>
-            </tab>
-            <tab heading="Code">
-                <div class="demo">
-                </div>
-            </tab>
-        </tabset>
-
         <h1 id="extending-builders">Extending validators</h1>
+        <markdown ngPreserveWhitespaces
+                  [src]="'assets/general/extending-validators.md'"></markdown>
+        <markdown ngPreserveWhitespaces
+                  [src]="'assets/general/extending-string.md'"></markdown>
         <tabset>
-            <tab heading="String demo">
+            <tab heading="Extending string">
                 <div class="demo">
+                    <app-extending-string-demo></app-extending-string-demo>
                 </div>
             </tab>
             <tab heading="Code">
                 <div class="demo">
+                    <markdown ngPreserveWhitespaces
+                              [src]="'assets/general/extending-string-demo.md'"></markdown>
                 </div>
             </tab>
         </tabset>
-
     </div>
 
     <nav id="gumshoe-nav">
