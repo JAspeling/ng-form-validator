@@ -36,6 +36,15 @@ export function addError(control: AbstractControl, errorKey: string, error: stri
     }
 }
 
+export function removeError(control: AbstractControl, errorKey: string): void {
+    if (!assertControl(control, errorKey, true) || !assertError(control, errorKey, false)) {
+        return;
+    }
+    if (control.errors && control.errors[errorKey]) {
+        delete control.errors[errorKey];
+    }
+}
+
 /**
  * Adds multiple Validation errors to a form control (AbstractControl).
  * @param control The control on which to add the errors
@@ -100,7 +109,7 @@ function assertError(control: AbstractControl, errorKey: string, isAdding: boole
  * Marks the whole form group (Including its sub-groups) as touched.
  * @param formGroup The form group under question.
  */
-export function markAsTouchDeep(formGroup: FormGroup | AbstractControl) {
+export function markAsTouchDeep(formGroup: FormGroup | AbstractControl): void {
     (<any>Object).values((formGroup as FormGroup).controls).forEach((control: AbstractControl) => {
         control.markAsTouched();
 
