@@ -1,6 +1,5 @@
 import { ValidationErrors } from '@angular/forms';
-import { isNullOrUndefined, isNumber } from 'util';
-import { isNullOrWhitespace } from '../utils';
+import { isNullOrUndefined, isNumber } from 'is-what';
 import { ValidationBuilderBase } from './validation-builder-base';
 
 import { IValidationBuilder } from './validation-builder.interface';

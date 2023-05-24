@@ -1,11 +1,13 @@
-import { isNullOrUndefined } from 'util';
+export function isNullOrUndefined(value: any): boolean {
+    return value === null || value === undefined;
+}
 
 export function isNullOrWhitespace(value: string): boolean {
-    if (isNullOrUndefined(value)) return true;
+    if (isNullOrUndefined(value)) {
+        return true;
+    }
 
-    if (value.trim() === '') return true;
-
-    return false;
+    return value.trim() === '';
 }
 
 export function isEmptyObject(obj: any): boolean {

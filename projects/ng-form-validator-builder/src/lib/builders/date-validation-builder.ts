@@ -1,7 +1,7 @@
 import { FormControl, ValidationErrors } from '@angular/forms';
 
 import { IValidationBuilder } from './validation-builder.interface';
-import { isDate } from 'util';
+import { isDate } from 'is-what';
 import { ValidationBuilderBase } from './validation-builder-base';
 import { dateIsInThePast } from '../utils';
 

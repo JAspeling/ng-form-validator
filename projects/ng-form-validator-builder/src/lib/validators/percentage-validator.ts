@@ -1,7 +1,7 @@
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-import { isNullOrUndefined } from 'util';
 import { ValidationBuilder } from '../builders/validation-builder';
+import { isNullOrUndefined } from '../utils';
 
 export class PercentageValidator {
     public static isPositiveOrNullValue(): ValidatorFn {

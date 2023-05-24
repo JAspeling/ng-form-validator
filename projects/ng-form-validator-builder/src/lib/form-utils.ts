@@ -1,7 +1,6 @@
 import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
-import { isNullOrUndefined } from 'util';
 
-import { isEmptyObject } from './utils';
+import { isEmptyObject, isNullOrUndefined } from './utils';
 
 /* -------------------------------------------------------------------------- */
 /*                               Error handling                               */
