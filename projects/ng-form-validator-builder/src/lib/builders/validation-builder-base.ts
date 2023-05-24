@@ -1,8 +1,7 @@
 import { FormControl, ValidationErrors, Validators } from '@angular/forms';
-import { isNullOrUndefined } from 'util';
 
 import { addErrorsToControl } from '../form-utils';
-import { deleteAllPropertiesOfObject, isEmptyObject, isNullOrWhitespace } from '../utils';
+import { deleteAllPropertiesOfObject, isEmptyObject, isNullOrUndefined, isNullOrWhitespace } from '../utils';
 import { IValidationBuilder } from './validation-builder-base.interface';
 
 export class ValidationBuilderBase implements IValidationBuilder {

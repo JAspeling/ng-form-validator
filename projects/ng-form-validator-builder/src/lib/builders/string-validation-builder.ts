@@ -1,8 +1,8 @@
 import { ValidationErrors } from '@angular/forms';
-import { isNullOrUndefined } from 'util';
 
 import { ValidationBuilder } from './validation-builder';
 import { IValidationBuilder } from './validation-builder.interface';
+import { isNullOrUndefined } from '../utils';
 
 export class StringValidationBuilder implements IValidationBuilder {
     get errors(): ValidationErrors {

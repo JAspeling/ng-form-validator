@@ -9,7 +9,7 @@ export class DateValidator {
                 .date
                 .isValidDate(errorMessage)
                 .build();
-        }
+        };
     }
 
     public static notInThePast(errorMessage: string = 'Date cannot be in the past.'): ValidationErrors {
@@ -19,7 +19,7 @@ export class DateValidator {
                 .isValidDate()
                 .isNotInThePast(errorMessage)
                 .build();
-        }
+        };
     }
 
     public static isBefore(date: Date, errorMessage: string = 'A valid date value is required'): ValidationErrors {
