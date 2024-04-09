@@ -1,6 +1,6 @@
 {
     "name": "ng-form-validator-builder",
-    "version": "10.1.7",
+    "version": "10.1.8",
     "description": "Adds easy to use Validators on different base types to be used with angular (reactive) forms",
     "homepage": "http://jaspeling.github.io/ng-form-validator",
     "repository": {
