@@ -108,17 +108,6 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -162,16 +151,6 @@
             "main": "projects/ng-form-validator-builder/src/test.ts",
             "tsConfig": "projects/ng-form-validator-builder/tsconfig.spec.json",
             "karmaConfig": "projects/ng-form-validator-builder/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-form-validator-builder/tsconfig.lib.json",
-              "projects/ng-form-validator-builder/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
           }
         }
       }
