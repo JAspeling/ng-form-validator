@@ -8,22 +8,16 @@ import { DateDemoCodeComponent } from './date-demo-code/date-demo-code.component
 import { DateDemoComponent } from './date-demo/date-demo.component';
 
 @NgModule({
-    declarations: [
-        DateDemoComponent,
-        DateDemoCodeComponent
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
+  declarations: [DateDemoComponent, DateDemoCodeComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
 
-        MarkdownModule.forChild(),
+    MarkdownModule.forChild(),
 
-        SharedModule,
-    ],
-    exports: [
-        DateDemoComponent,
-        DateDemoCodeComponent
-    ]
+    SharedModule,
+  ],
+  exports: [DateDemoComponent, DateDemoCodeComponent],
 })
-export class DateModule { }
+export class DateModule {}

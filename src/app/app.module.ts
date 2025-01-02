@@ -20,57 +20,56 @@ import { AppComponent } from './app.component';
 import { DateModule } from './date/date.module';
 import { SharedModule } from './shared/shared.module';
 import { StringModule } from './string/string.module';
-import { GumshoeDirective, ScrollSpyDirective } from './shared/scrollspy.directive';
+import {
+  GumshoeDirective,
+  ScrollSpyDirective,
+} from './shared/scrollspy.directive';
 import { NumericModule } from './numeric/numeric.module';
 
 // function that returns `MarkedOptions` with renderer override
 export function markedOptionsFactory(): MarkedOptions {
-    const renderer = new MarkedRenderer();
+  const renderer = new MarkedRenderer();
 
-    renderer.blockquote = (text: string) => {
-        return '<blockquote class="blockquote"><p>' + text + '</p></blockquote>';
-    };
+  renderer.blockquote = (text: string) => {
+    return '<blockquote class="blockquote"><p>' + text + '</p></blockquote>';
+  };
 
-    return {
-        renderer,
-        gfm: true,
-        breaks: false,
-        pedantic: false,
-        smartLists: true,
-        smartypants: false,
-    };
+  return {
+    renderer,
+    gfm: true,
+    breaks: false,
+    pedantic: false,
+    smartLists: true,
+    smartypants: false,
+  };
 }
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ScrollSpyDirective,
-        GumshoeDirective
-    ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
+  declarations: [AppComponent, ScrollSpyDirective, GumshoeDirective],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
 
-        TabsModule.forRoot(),
-        AccordionModule.forRoot(),
-        MarkdownModule.forRoot({
-            loader: HttpClient,
-            markedOptions: {
-                provide: MarkedOptions,
-                useFactory: markedOptionsFactory,
-            }
-        }),
+    TabsModule.forRoot(),
+    AccordionModule.forRoot(),
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      markedOptions: {
+        provide: MarkedOptions,
+        useFactory: markedOptionsFactory,
+      },
+    }),
 
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
 
-        SharedModule,
-        DateModule,
-        StringModule,
-        NumericModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+    SharedModule,
+    DateModule,
+    StringModule,
+    NumericModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

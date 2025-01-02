@@ -4,62 +4,61 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownService } from 'ngx-markdown';
 
 import {
-    getFirstErrorFromControl,
-    touchedControlHasError,
+  getFirstErrorFromControl,
+  touchedControlHasError,
 } from '@validator-builder';
 import { Guid } from '../guid';
 
 // import { getFirstErrorFromControl, touchedControlHasError } from '@validator-builder';
 @Component({
-    selector: 'app-text-input-wrapper',
-    templateUrl: './text-input-wrapper.component.html'
+  selector: 'app-text-input-wrapper',
+  templateUrl: './text-input-wrapper.component.html',
 })
 export class TextInputWrapperComponent implements OnInit {
-    faChevronDown = faChevronDown;
-    faChevronUp = faChevronUp;
+  faChevronDown = faChevronDown;
+  faChevronUp = faChevronUp;
 
-    id: string = Guid.newGuid();
+  id: string = Guid.newGuid();
 
-    @Input() form: FormGroup;
-    @Input() name: string;
-    @Input() label: string;
-    @Input() markdownSrc: string;
+  @Input() form: FormGroup;
+  @Input() name: string;
+  @Input() label: string;
+  @Input() markdownSrc: string;
 
-    @Input() actions: { action: () => void, icon: string, info: string }[] = [];
+  @Input() actions: { action: () => void; icon: string; info: string }[] = [];
 
-    showState: boolean = false;
+  showState: boolean = false;
 
-    get firstError(): string {
-        return getFirstErrorFromControl(this.formControl);
-    }
+  get firstError(): string {
+    return getFirstErrorFromControl(this.formControl);
+  }
 
-    get hasError(): boolean {
-        return touchedControlHasError(this.formControl);
-    }
+  get hasError(): boolean {
+    return touchedControlHasError(this.formControl);
+  }
 
-    get state(): any {
-        return {
-            name: this.name,
-            errors: this.formControl.errors,
-            status: this.formControl.status,
-            value: this.formControl.value
-        };
-    }
+  get state(): any {
+    return {
+      name: this.name,
+      errors: this.formControl.errors,
+      status: this.formControl.status,
+      value: this.formControl.value,
+    };
+  }
 
-    get formControl(): AbstractControl {
-        return this.form?.controls[this.name];
-    }
+  get formControl(): AbstractControl {
+    return this.form?.controls[this.name];
+  }
 
-    constructor(private readonly markdown: MarkdownService) { }
+  constructor(private readonly markdown: MarkdownService) {}
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {}
 
-    toggleState(): void {
-        this.showState = !this.showState;
-    }
+  toggleState(): void {
+    this.showState = !this.showState;
+  }
 
-    updateState(): void {
-        this.markdown.highlight();
-    }
+  updateState(): void {
+    this.markdown.highlight();
+  }
 }

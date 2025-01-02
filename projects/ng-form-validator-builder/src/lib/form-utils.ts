@@ -11,11 +11,11 @@ import { isEmptyObject, isNullOrUndefined } from './utils';
  * @param control The AbstractControl to check for errors
  */
 export function getFirstErrorFromControl(control: AbstractControl): string {
-    if (isNullOrUndefined(control) || isNullOrUndefined(control.errors)) {
-        return null;
-    }
-    const key = Object.keys(control.errors)[0];
-    return control.errors[key];
+  if (isNullOrUndefined(control) || isNullOrUndefined(control.errors)) {
+    return null;
+  }
+  const key = Object.keys(control.errors)[0];
+  return control.errors[key];
 }
 
 /**
@@ -23,26 +23,36 @@ export function getFirstErrorFromControl(control: AbstractControl): string {
  * @param errorKey The key of the error
  * @param error The error string
  */
-export function addError(control: AbstractControl, errorKey: string, error: string): void {
-    if (!assertControl(control, errorKey, true) || !assertError(control, errorKey, true)) {
-        return;
-    }
-    if (control.errors) {
-        control.errors[errorKey] = error;
-    } else {
-        const validationError: ValidationErrors = {};
-        validationError[errorKey] = error;
-        control.setErrors(validationError);
-    }
+export function addError(
+  control: AbstractControl,
+  errorKey: string,
+  error: string,
+): void {
+  if (
+    !assertControl(control, errorKey, true) ||
+    !assertError(control, errorKey, true)
+  ) {
+    return;
+  }
+  if (control.errors) {
+    control.errors[errorKey] = error;
+  } else {
+    const validationError: ValidationErrors = {};
+    validationError[errorKey] = error;
+    control.setErrors(validationError);
+  }
 }
 
 export function removeError(control: AbstractControl, errorKey: string): void {
-    if (!assertControl(control, errorKey, true) || !assertError(control, errorKey, false)) {
-        return;
-    }
-    if (control.errors && control.errors[errorKey]) {
-        delete control.errors[errorKey];
-    }
+  if (
+    !assertControl(control, errorKey, true) ||
+    !assertError(control, errorKey, false)
+  ) {
+    return;
+  }
+  if (control.errors && control.errors[errorKey]) {
+    delete control.errors[errorKey];
+  }
 }
 
 /**
@@ -50,16 +60,19 @@ export function removeError(control: AbstractControl, errorKey: string): void {
  * @param control The control on which to add the errors
  * @param errors The ValidationErrors to add to the control.
  */
-export function addErrorsToControl(control: AbstractControl, errors: ValidationErrors): void {
-    if (isNullOrUndefined(errors) || isEmptyObject(errors)) {
-        return;
-    }
+export function addErrorsToControl(
+  control: AbstractControl,
+  errors: ValidationErrors,
+): void {
+  if (isNullOrUndefined(errors) || isEmptyObject(errors)) {
+    return;
+  }
 
-    for (const key in errors) {
-        if (errors.hasOwnProperty(key)) {
-            addError(control, key, errors[key]);
-        }
+  for (const key in errors) {
+    if (errors.hasOwnProperty(key)) {
+      addError(control, key, errors[key]);
     }
+  }
 }
 
 /**
@@ -67,11 +80,13 @@ export function addErrorsToControl(control: AbstractControl, errors: ValidationE
  * @param control The control under question
  */
 export function touchedControlHasError(control: AbstractControl): boolean {
-    if (isNullOrUndefined(control)) {
-        return false;
-    }
+  if (isNullOrUndefined(control)) {
+    return false;
+  }
 
-    return control.invalid && !control.pending && !control.disabled && control.touched;
+  return (
+    control.invalid && !control.pending && !control.disabled && control.touched
+  );
 }
 
 /* -------------------------------------------------------------------------- */
@@ -81,14 +96,18 @@ export function touchedControlHasError(control: AbstractControl): boolean {
 /**
  * Makes sure the control is defined.
  */
-function assertControl(control: AbstractControl, errorKey: string, isAdding: boolean): boolean {
-    if (isNullOrUndefined(control)) {
-        console.warn(
-            `Can't ${isAdding ? 'add' : 'remove'} error '${errorKey}' on the form control, because the control is undefined.`
-        );
-        return false;
-    }
-    return true;
+function assertControl(
+  control: AbstractControl,
+  errorKey: string,
+  isAdding: boolean,
+): boolean {
+  if (isNullOrUndefined(control)) {
+    console.warn(
+      `Can't ${isAdding ? 'add' : 'remove'} error '${errorKey}' on the form control, because the control is undefined.`,
+    );
+    return false;
+  }
+  return true;
 }
 
 /**
@@ -97,12 +116,18 @@ function assertControl(control: AbstractControl, errorKey: string, isAdding: boo
  * @param errorKey The key (property) of the error
  * @param isAdding Whether you are trying to add or remove an error from the control.
  */
-function assertError(control: AbstractControl, errorKey: string, isAdding: boolean): boolean {
-    if (isNullOrUndefined(control)) {
-        console.warn(`Can't ${isAdding ? 'add' : 'remove'} error '${errorKey}' on the form control because it is undefined.`);
-        return false;
-    }
-    return true;
+function assertError(
+  control: AbstractControl,
+  errorKey: string,
+  isAdding: boolean,
+): boolean {
+  if (isNullOrUndefined(control)) {
+    console.warn(
+      `Can't ${isAdding ? 'add' : 'remove'} error '${errorKey}' on the form control because it is undefined.`,
+    );
+    return false;
+  }
+  return true;
 }
 
 /**
@@ -110,11 +135,13 @@ function assertError(control: AbstractControl, errorKey: string, isAdding: boole
  * @param formGroup The form group under question.
  */
 export function markAsTouchDeep(formGroup: FormGroup | AbstractControl): void {
-    (<any>Object).values((formGroup as FormGroup).controls).forEach((control: AbstractControl) => {
-        control.markAsTouched();
+  (<any>Object)
+    .values((formGroup as FormGroup).controls)
+    .forEach((control: AbstractControl) => {
+      control.markAsTouched();
 
-        if (control['controls']) {
-            markAsTouchDeep(control);
-        }
+      if (control['controls']) {
+        markAsTouchDeep(control);
+      }
     });
-};
+}

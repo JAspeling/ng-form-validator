@@ -3,20 +3,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MyStringValidator } from '../custom-string-validator';
 
 @Component({
-    selector: 'app-extending-string-demo',
-    templateUrl: './extending-string-demo.component.html'
+  selector: 'app-extending-string-demo',
+  templateUrl: './extending-string-demo.component.html',
 })
 export class ExtendingStringDemoComponent implements OnInit {
-    form: FormGroup;
-    password: string = 'P@ssw0rd';
+  form: FormGroup;
+  password: string = 'P@ssw0rd';
 
-    constructor() {
-    }
+  constructor() {}
 
-    ngOnInit(): void {
-        this.form = new FormBuilder().group({
-            password: [ '', [ MyStringValidator.passwordComplexity(this.password) ] ]
-        });
-    }
-
+  ngOnInit(): void {
+    this.form = new FormBuilder().group({
+      password: ['', [MyStringValidator.passwordComplexity(this.password)]],
+    });
+  }
 }

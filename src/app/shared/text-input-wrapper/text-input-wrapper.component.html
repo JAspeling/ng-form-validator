@@ -1,50 +1,48 @@
-<div class="form-group"
-     [formGroup]="form">
-    <label [for]="id">{{label}}</label>
+<div class="form-group" [formGroup]="form">
+  <label [for]="id">{{ label }}</label>
 
-    <div class="input-group">
-        <input class="form-control"
-               autocomplete="off"
-               (ngModelChange)="updateState()"
-               [formControlName]="name"
-               [name]="name"
-               [class.input-validation-error]="hasError"
-               [id]="id">
-        <div class="input-group-append">
-            <div class="btn-group"
-                 role="group"
-                 aria-label="Basic example">
-                <button style="min-width: 40px;"
-                        class="btn btn-small btn-primary"
-                        (click)="toggleState()">
-                    <fa-icon *ngIf="!showState"
-                             [icon]="faChevronDown"></fa-icon>
-                    <fa-icon *ngIf="showState"
-                             [icon]="faChevronUp"></fa-icon>
-                </button>
-                <button *ngFor="let action of actions"
-                        style="min-width: 40px;"
-                        class="btn btn-small btn-primary"
-                        [title]="action.info"
-                        (click)="action.action()">
-                    <fa-icon [icon]="action.icon"></fa-icon>
-                </button>
-            </div>
-        </div>
+  <div class="input-group">
+    <input
+      class="form-control"
+      autocomplete="off"
+      (ngModelChange)="updateState()"
+      [formControlName]="name"
+      [name]="name"
+      [class.input-validation-error]="hasError"
+      [id]="id"
+    />
+    <div class="input-group-append">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button
+          style="min-width: 40px"
+          class="btn btn-small btn-primary"
+          (click)="toggleState()"
+        >
+          <fa-icon *ngIf="!showState" [icon]="faChevronDown"></fa-icon>
+          <fa-icon *ngIf="showState" [icon]="faChevronUp"></fa-icon>
+        </button>
+        <button
+          *ngFor="let action of actions"
+          style="min-width: 40px"
+          class="btn btn-small btn-primary"
+          [title]="action.info"
+          (click)="action.action()"
+        >
+          <fa-icon [icon]="action.icon"></fa-icon>
+        </button>
+      </div>
     </div>
-    <div *ngIf="hasError"
-         class="field-validation-error">
-        {{firstError}}
-    </div>
+  </div>
+  <div *ngIf="hasError" class="field-validation-error">
+    {{ firstError }}
+  </div>
 
-    <div id="collapseBasic"
-         [collapse]="!showState"
-         [isAnimated]="true">
-        <div class="card">
-            <div class="card-body">
-                <markdown [data]="state | json | language: 'json'"></markdown>
-                <markdown [src]="markdownSrc"></markdown>
-            </div>
-        </div>
+  <div id="collapseBasic" [collapse]="!showState" [isAnimated]="true">
+    <div class="card">
+      <div class="card-body">
+        <markdown [data]="state | json | language: 'json'"></markdown>
+        <markdown [src]="markdownSrc"></markdown>
+      </div>
     </div>
+  </div>
 </div>

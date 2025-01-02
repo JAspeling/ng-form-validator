@@ -10,27 +10,19 @@ import { MarkdownModule } from 'ngx-markdown';
 import { DateInputWrapperComponent } from './date-input-wrapper/date-input-wrapper.component';
 import { TextInputWrapperComponent } from './text-input-wrapper/text-input-wrapper.component';
 
-
 @NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
 
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-
-        BrowserAnimationsModule,
-        CollapseModule.forRoot(),
-        BsDatepickerModule.forRoot(),
-        MarkdownModule.forChild(),
-        FontAwesomeModule
-    ],
-    declarations: [
-        DateInputWrapperComponent,
-        TextInputWrapperComponent
-    ],
-    exports: [
-        DateInputWrapperComponent,
-        TextInputWrapperComponent
-    ],
+    BrowserAnimationsModule,
+    CollapseModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    MarkdownModule.forChild(),
+    FontAwesomeModule,
+  ],
+  declarations: [DateInputWrapperComponent, TextInputWrapperComponent],
+  exports: [DateInputWrapperComponent, TextInputWrapperComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

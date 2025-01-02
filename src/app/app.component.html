@@ -1,100 +1,112 @@
 <div class="container d-flex">
-    <div class="content flex-grow-1" #container>
-        <h1 class="display-4">Form Validation Demo</h1>
+  <div class="content flex-grow-1" #container>
+    <h1 class="display-4">Form Validation Demo</h1>
 
-        <p class="lead">
-            Some examples about how the custom validation builder works, how to dynamically switch out/change validators
-            and
-            how to implement custom builders to extend existing functionality.
-        </p>
+    <p class="lead">
+      Some examples about how the custom validation builder works, how to
+      dynamically switch out/change validators and how to implement custom
+      builders to extend existing functionality.
+    </p>
 
-        <hr>
+    <hr />
 
-        <h4 id="general-guidelines">General guidelines</h4>
-        <hr>
+    <h4 id="general-guidelines">General guidelines</h4>
+    <hr />
 
-        <p>To display the form controls, I am using template binding on the forms and displaying the error like the following:</p>
+    <p>
+      To display the form controls, I am using template binding on the forms and
+      displaying the error like the following:
+    </p>
 
-        <markdown ngPreserveWhitespaces
-                  [src]="'assets/general/form-binding.md'"></markdown>
+    <markdown
+      ngPreserveWhitespaces
+      [src]="'assets/general/form-binding.md'"
+    ></markdown>
 
-        <h4 id="utility-functions">Utility functions</h4>
-        <hr>
-        <markdown ngPreserveWhitespaces
-                  [src]="'assets/general/utilities.md'"></markdown>
+    <h4 id="utility-functions">Utility functions</h4>
+    <hr />
+    <markdown
+      ngPreserveWhitespaces
+      [src]="'assets/general/utilities.md'"
+    ></markdown>
 
-        <h1 id="date-validation">Date Validation</h1>
-        <tabset>
-            <tab heading="Date Demo">
-                <div class="demo">
-                    <app-date-demo></app-date-demo>
-                </div>
-            </tab>
-            <tab heading="Code">
-                <div class="demo">
-                    <app-date-demo-code></app-date-demo-code>
-                </div>
-            </tab>
-        </tabset>
-
-        <h1 id="string-validation">String Validation</h1>
-        <tabset>
-            <tab heading="String demo">
-                <div class="demo">
-                    <app-string-demo></app-string-demo>
-                </div>
-            </tab>
-            <tab heading="Code">
-                <div class="demo">
-                    <app-string-demo-code></app-string-demo-code>
-                </div>
-            </tab>
-        </tabset>
-
-        <h1 id="numeric-validation">Numeric Validation</h1>
-        <tabset>
-            <tab heading="String demo">
-                <div class="demo">
-                    <app-numeric-demo></app-numeric-demo>
-                </div>
-            </tab>
-            <tab heading="Code">
-                <div class="demo">
-                    <app-numeric-demo-code></app-numeric-demo-code>
-                </div>
-            </tab>
-        </tabset>
-
-        <h1 id="extending-builders">Extending validators</h1>
-        <markdown ngPreserveWhitespaces
-                  [src]="'assets/general/extending-validators.md'"></markdown>
-        <markdown ngPreserveWhitespaces
-                  [src]="'assets/general/extending-string.md'"></markdown>
-        <tabset>
-            <tab heading="Extending string">
-                <div class="demo">
-                    <app-extending-string-demo></app-extending-string-demo>
-                </div>
-            </tab>
-            <tab heading="Code">
-                <div class="demo">
-                    <markdown ngPreserveWhitespaces
-                              [src]="'assets/general/extending-string-demo.md'"></markdown>
-                </div>
-            </tab>
-        </tabset>
-    </div>
-
-    <nav id="gumshoe-nav">
-        <div class="content">
-            <h6>On this page</h6>
-            <hr class="mt-1">
-            <ul>
-                <li *ngFor="let heading of headings">
-                    <a [href]="'#' + heading.id">{{heading.text}}</a>
-                </li>
-            </ul>
+    <h1 id="date-validation">Date Validation</h1>
+    <tabset>
+      <tab heading="Date Demo">
+        <div class="demo">
+          <app-date-demo></app-date-demo>
         </div>
-    </nav>
+      </tab>
+      <tab heading="Code">
+        <div class="demo">
+          <app-date-demo-code></app-date-demo-code>
+        </div>
+      </tab>
+    </tabset>
 
+    <h1 id="string-validation">String Validation</h1>
+    <tabset>
+      <tab heading="String demo">
+        <div class="demo">
+          <app-string-demo></app-string-demo>
+        </div>
+      </tab>
+      <tab heading="Code">
+        <div class="demo">
+          <app-string-demo-code></app-string-demo-code>
+        </div>
+      </tab>
+    </tabset>
+
+    <h1 id="numeric-validation">Numeric Validation</h1>
+    <tabset>
+      <tab heading="String demo">
+        <div class="demo">
+          <app-numeric-demo></app-numeric-demo>
+        </div>
+      </tab>
+      <tab heading="Code">
+        <div class="demo">
+          <app-numeric-demo-code></app-numeric-demo-code>
+        </div>
+      </tab>
+    </tabset>
+
+    <h1 id="extending-builders">Extending validators</h1>
+    <markdown
+      ngPreserveWhitespaces
+      [src]="'assets/general/extending-validators.md'"
+    ></markdown>
+    <markdown
+      ngPreserveWhitespaces
+      [src]="'assets/general/extending-string.md'"
+    ></markdown>
+    <tabset>
+      <tab heading="Extending string">
+        <div class="demo">
+          <app-extending-string-demo></app-extending-string-demo>
+        </div>
+      </tab>
+      <tab heading="Code">
+        <div class="demo">
+          <markdown
+            ngPreserveWhitespaces
+            [src]="'assets/general/extending-string-demo.md'"
+          ></markdown>
+        </div>
+      </tab>
+    </tabset>
+  </div>
+
+  <nav id="gumshoe-nav">
+    <div class="content">
+      <h6>On this page</h6>
+      <hr class="mt-1" />
+      <ul>
+        <li *ngFor="let heading of headings">
+          <a [href]="'#' + heading.id">{{ heading.text }}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>

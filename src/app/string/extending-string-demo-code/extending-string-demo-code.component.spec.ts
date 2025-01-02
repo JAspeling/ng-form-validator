@@ -8,9 +8,8 @@ describe('ExtendingStringDemoCodeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExtendingStringDemoCodeComponent ]
-    })
-    .compileComponents();
+      declarations: [ExtendingStringDemoCodeComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
