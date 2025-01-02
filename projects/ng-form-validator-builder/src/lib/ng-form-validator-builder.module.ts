@@ -1,10 +1,4 @@
 import { NgModule } from '@angular/core';
 
-@NgModule({
-    imports: [
-    ],
-    exports: [
-        FormValidatorBuilderModule
-    ]
-})
+@NgModule()
 export class FormValidatorBuilderModule { }
