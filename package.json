@@ -1,11 +1,12 @@
 {
   "name": "ng-form-validator",
-  "version": "0.0.0",
+  "version": "12.2.18",
   "scripts": {
     "ng": "ng",
     "buildLib:patch": "cd projects/ng-form-validator-builder && npm version patch && cd ../.. && npm run buildLib",
     "buildLib": "ng build ng-form-validator-builder --configuration production",
-    "releaseLib": "npm run buildLib:patch && cd dist/ng-form-validator-builder && npm publish --access public",
+    "releaseLib:patch": "npm run buildLib:patch && cd dist/ng-form-validator-builder && npm publish --access public",
+    "releaseLib": "npm run buildLib && cd dist/ng-form-validator-builder && npm publish --access public",
     "buildDocs": "ng build --configuration production --baseHref=https://JAspeling.github.io/ng-form-validator/",
     "start": "ng serve",
     "build": "ng build",
@@ -34,13 +35,13 @@
     "is-what": "^4.1.11",
     "jquery": "^3.5.1",
     "ngx-bootstrap": "^6.2.0",
-    "ngx-markdown": "^12.0.1",
+    "ngx-markdown": "12.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.18",
+    "@angular-devkit/build-angular": "^12.2.18",
     "@angular/cli": "~12.2.18",
     "@angular/compiler-cli": "~12.2.17",
     "@schematics/angular": "^11.0.1",
@@ -48,6 +49,8 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/jquery": "^3.5.10",
     "@types/node": "^12.11.1",
+    "@types/eslint": "^8.4.6",
+    "@types/estree": "0.0.50",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -56,14 +59,11 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "ng-packagr": "^12.2.7",
-    "protractor": "~7.0.0",
+    "ng-packagr": "^12.2.3",
     "prettier": "^3.4.2",
+    "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.3.5"
-  },
-  "resolutions": {
-    "webpack": "^5.0.0"
   }
 }
