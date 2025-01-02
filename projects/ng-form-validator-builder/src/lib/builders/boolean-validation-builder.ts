@@ -20,14 +20,22 @@ export class BooleanValidationBuilder implements IValidationBuilder {
     }
   }
 
-  constructor(private readonly builder: ValidationBuilderBase) { }
+  constructor(private readonly builder: ValidationBuilderBase) {}
 
-  ifTrue(callbackFn: (value: any) => boolean, errorKey: string, errorMessage: string): BooleanValidationBuilder {
+  ifTrue(
+    callbackFn: (value: any) => boolean,
+    errorKey: string,
+    errorMessage: string,
+  ): BooleanValidationBuilder {
     this.builder.ifTrue(callbackFn, errorKey, errorMessage);
     return this;
   }
 
-  ifFalse(callbackFn: (value: any) => boolean, errorKey: string, errorMessage: string): BooleanValidationBuilder {
+  ifFalse(
+    callbackFn: (value: any) => boolean,
+    errorKey: string,
+    errorMessage: string,
+  ): BooleanValidationBuilder {
     this.builder.ifFalse(callbackFn, errorKey, errorMessage);
     return this;
   }

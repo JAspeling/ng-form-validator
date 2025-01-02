@@ -10,8 +10,11 @@ Built with one purpose - Make Reactive form validation in Angular easier to use.
 - [Combining Validators](#combining-validators)
 - [How it works behind the scenes](#how-it-works-behind-the-scenes)
 - [Extending validators](#extending-validators)
+
 ---
+
 # Getting started
+
 Take a look at [the live demo](https://jaspeling.github.io/ng-form-validator/) to play around with the validators
 
 ## Install the library
@@ -35,15 +38,19 @@ const form = new FormBuilder().group({
 ```
 
 ---
+
 # Combining Validators
+
 TODO: Add documentation here
 
 ---
 
 # How it works behind the scenes
+
 TODO: Add documentation on how the validators work with the builders.
 
 ---
+
 # Extending validators
 
 TODO: Add documentation on extending validation builders to create custom validators and extend on existing validators.

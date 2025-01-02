@@ -7,14 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
-    declarations: [ NumericDemoComponent, NumericDemoCodeComponent ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        SharedModule,
-        MarkdownModule
-    ],
-    exports: [ NumericDemoComponent, NumericDemoCodeComponent ],
+  declarations: [NumericDemoComponent, NumericDemoCodeComponent],
+  imports: [CommonModule, ReactiveFormsModule, SharedModule, MarkdownModule],
+  exports: [NumericDemoComponent, NumericDemoCodeComponent],
 })
-export class NumericModule {
-}
+export class NumericModule {}

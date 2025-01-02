@@ -8,30 +8,28 @@ import { SharedModule } from '../shared/shared.module';
 import { ExtendingStringDemoComponent } from './extending-string-demo/extending-string-demo.component';
 import { ExtendingStringDemoCodeComponent } from './extending-string-demo-code/extending-string-demo-code.component';
 
-
-
 @NgModule({
-    declarations: [
-        StringDemoComponent,
-        StringDemoCodeComponent,
-        ExtendingStringDemoComponent,
-        ExtendingStringDemoCodeComponent
-    ],
-    imports: [
-        CommonModule,
+  declarations: [
+    StringDemoComponent,
+    StringDemoCodeComponent,
+    ExtendingStringDemoComponent,
+    ExtendingStringDemoCodeComponent,
+  ],
+  imports: [
+    CommonModule,
 
-        FormsModule,
-        ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
 
-        MarkdownModule.forChild(),
+    MarkdownModule.forChild(),
 
-        SharedModule,
-    ],
-    exports: [
-        StringDemoComponent,
-        StringDemoCodeComponent,
-        ExtendingStringDemoComponent,
-        ExtendingStringDemoCodeComponent
-    ]
+    SharedModule,
+  ],
+  exports: [
+    StringDemoComponent,
+    StringDemoCodeComponent,
+    ExtendingStringDemoComponent,
+    ExtendingStringDemoCodeComponent,
+  ],
 })
-export class StringModule { }
+export class StringModule {}

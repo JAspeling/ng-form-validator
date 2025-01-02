@@ -1,25 +1,35 @@
 <form [formGroup]="form">
-    <div class="row">
-        <div class="col-12">
-            <app-text-input-wrapper [form]="form"
-                                    [name]="'email'"
-                                    [label]="'Email validation (Must be a valid email)'"></app-text-input-wrapper>
+  <div class="row">
+    <div class="col-12">
+      <app-text-input-wrapper
+        [form]="form"
+        [name]="'email'"
+        [label]="'Email validation (Must be a valid email)'"
+      ></app-text-input-wrapper>
 
-            <app-text-input-wrapper [form]="form"
-                                    [name]="'regex'"
-                                    [label]="'Regex validation (Must contain \'simple\' or \'regex\')'"></app-text-input-wrapper>
+      <app-text-input-wrapper
+        [form]="form"
+        [name]="'regex'"
+        [label]="'Regex validation (Must contain \'simple\' or \'regex\')'"
+      ></app-text-input-wrapper>
 
-            <app-text-input-wrapper [form]="form"
-                                    [name]="'min'"
-                                    [label]="'Min length allowed (Min 5 characters)'"></app-text-input-wrapper>
+      <app-text-input-wrapper
+        [form]="form"
+        [name]="'min'"
+        [label]="'Min length allowed (Min 5 characters)'"
+      ></app-text-input-wrapper>
 
-            <app-text-input-wrapper [form]="form"
-                                    [name]="'max'"
-                                    [label]="'Max length allowed (Max 5 characters)'"></app-text-input-wrapper>
+      <app-text-input-wrapper
+        [form]="form"
+        [name]="'max'"
+        [label]="'Max length allowed (Max 5 characters)'"
+      ></app-text-input-wrapper>
 
-            <app-text-input-wrapper [form]="form"
-                                    [name]="'range'"
-                                    [label]="'Lower and upper range length allowed (Between 10 - 15)'"></app-text-input-wrapper>
-        </div>
+      <app-text-input-wrapper
+        [form]="form"
+        [name]="'range'"
+        [label]="'Lower and upper range length allowed (Between 10 - 15)'"
+      ></app-text-input-wrapper>
     </div>
+  </div>
 </form>

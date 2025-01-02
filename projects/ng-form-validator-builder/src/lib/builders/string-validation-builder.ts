@@ -5,99 +5,130 @@ import { IValidationBuilder } from './validation-builder.interface';
 import { isNullOrUndefined } from '../utils';
 
 export class StringValidationBuilder implements IValidationBuilder {
-    get errors(): ValidationErrors {
-        return this.builder.baseErrors;
+  get errors(): ValidationErrors {
+    return this.builder.baseErrors;
+  }
+
+  get value(): any {
+    return this.builder.value;
+  }
+  set value(val: any) {
+    if (val !== this.builder.value) {
+      this.builder.value = val;
+    }
+  }
+  constructor(private readonly builder: ValidationBuilder) {}
+
+  public minLengthAllowed(
+    min: number,
+    errorMessage?: string,
+  ): StringValidationBuilder {
+    if (this.builder.ignore || isNullOrUndefined(this.value)) {
+      return this;
+    }
+    errorMessage = errorMessage || `Min length of ${min} characters`;
+
+    if (this.value.length < min) {
+      this.errors.minLength = errorMessage;
     }
 
-    get value(): any {
-        return this.builder.value;
+    return this;
+  }
+
+  public maxLengthAllowed(
+    max: number,
+    errorMessage?: string,
+  ): StringValidationBuilder {
+    if (this.builder.ignore || isNullOrUndefined(this.value)) {
+      return this;
     }
-    set value(val: any) {
-        if (val !== this.builder.value) {
-            this.builder.value = val;
-        }
-    }
-    constructor(private readonly builder: ValidationBuilder) { }
+    errorMessage = errorMessage || `Max length of ${max} characters`;
 
-    public minLengthAllowed(min: number, errorMessage?: string): StringValidationBuilder {
-        if (this.builder.ignore || isNullOrUndefined(this.value)) { return this; }
-        errorMessage = errorMessage || `Min length of ${min} characters`;
-
-        if (this.value.length < min) {
-            this.errors.minLength = errorMessage;
-        }
-
-        return this;
+    if (this.value.length > max) {
+      this.errors.maxLength = errorMessage;
     }
 
-    public maxLengthAllowed(max: number, errorMessage?: string): StringValidationBuilder {
-        if (this.builder.ignore || isNullOrUndefined(this.value)) { return this; }
-        errorMessage = errorMessage || `Max length of ${max} characters`;
+    return this;
+  }
 
-        if (this.value.length > max) {
-            this.errors.maxLength = errorMessage;
-        }
+  public range(
+    lowerRange: number,
+    upperRange: number,
+    errorMessage?: string,
+  ): StringValidationBuilder {
+    if (this.builder.ignore || isNullOrUndefined(this.value)) {
+      return this;
+    }
+    errorMessage =
+      errorMessage ||
+      `Require between ${lowerRange} and ${upperRange} characters`;
 
-        return this;
+    if (this.value.length < lowerRange || this.value.length > upperRange) {
+      this.errors.invalidRange = errorMessage;
+    }
+    return this;
+  }
+
+  public regex(
+    regexString: RegExp,
+    errorMessage?: string,
+  ): StringValidationBuilder {
+    if (this.builder.ignore || isNullOrUndefined(this.value)) {
+      return this;
     }
 
-    public range(lowerRange: number, upperRange: number, errorMessage?: string): StringValidationBuilder {
-        if (this.builder.ignore || isNullOrUndefined(this.value)) { return this; }
-        errorMessage = errorMessage || `Require between ${lowerRange} and ${upperRange} characters`;
+    errorMessage = errorMessage || 'Invalid pattern';
 
-        if (this.value.length < lowerRange || this.value.length > upperRange) {
-            this.errors.invalidRange = errorMessage;
-        }
-        return this;
+    if (typeof this.value === 'string') {
+      if (isNullOrUndefined(this.value.match(regexString))) {
+        this.errors.invalidPattern = errorMessage;
+      }
+    } else {
+      this.errors.invalidPattern = 'Invalid object type';
     }
 
-    public regex(regexString: RegExp, errorMessage?: string): StringValidationBuilder {
-        if (this.builder.ignore || isNullOrUndefined(this.value)) { return this; }
+    return this;
+  }
 
-        errorMessage = errorMessage || 'Invalid pattern';
+  ifTrue(
+    callbackFn: (value: any) => boolean,
+    errorKey: string,
+    errorMessage: string,
+  ): StringValidationBuilder {
+    this.builder.ifTrue(callbackFn, errorKey, errorMessage);
+    return this;
+  }
 
-        if (typeof this.value === 'string') {
-            if (isNullOrUndefined(this.value.match(regexString))) {
-                this.errors.invalidPattern = errorMessage;
-            }
-        } else {
-            this.errors.invalidPattern = 'Invalid object type';
-        }
+  ifFalse(
+    callbackFn: (value: any) => boolean,
+    errorKey: string,
+    errorMessage: string,
+  ): StringValidationBuilder {
+    this.builder.ifFalse(callbackFn, errorKey, errorMessage);
+    return this;
+  }
 
-        return this;
-    }
+  isRequired(): StringValidationBuilder {
+    this.builder.isRequired();
+    return this;
+  }
 
-    ifTrue(callbackFn: (value: any) => boolean, errorKey: string, errorMessage: string): StringValidationBuilder {
-        this.builder.ifTrue(callbackFn, errorKey, errorMessage);
-        return this;
-    }
+  withMessage(message: string, property?: string): StringValidationBuilder {
+    this.builder.withMessage(message, property);
+    return this;
+  }
 
-    ifFalse(callbackFn: (value: any) => boolean, errorKey: string, errorMessage: string): StringValidationBuilder {
-        this.builder.ifFalse(callbackFn, errorKey, errorMessage);
-        return this;
-    }
+  ignoreWhen(callbackFn: (value: any) => boolean): StringValidationBuilder {
+    this.builder.ignoreWhen(callbackFn);
+    return this;
+  }
 
-    isRequired(): StringValidationBuilder {
-        this.builder.isRequired();
-        return this;
-    }
+  addErrors(): StringValidationBuilder {
+    this.builder.addErrors();
+    return this;
+  }
 
-    withMessage(message: string, property?: string): StringValidationBuilder {
-        this.builder.withMessage(message, property);
-        return this;
-    }
-
-    ignoreWhen(callbackFn: (value: any) => boolean): StringValidationBuilder {
-        this.builder.ignoreWhen(callbackFn);
-        return this;
-    }
-
-    addErrors(): StringValidationBuilder {
-        this.builder.addErrors();
-        return this;
-    }
-
-    build(): ValidationErrors {
-        return this.builder.build();
-    }
+  build(): ValidationErrors {
+    return this.builder.build();
+  }
 }
