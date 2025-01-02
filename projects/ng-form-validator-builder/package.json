@@ -1,34 +1,34 @@
 {
-    "name": "ng-form-validator-builder",
-    "version": "10.1.8",
-    "description": "Adds easy to use Validators on different base types to be used with angular (reactive) forms",
-    "homepage": "http://jaspeling.github.io/ng-form-validator",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/JAspeling/ng-form-validator"
-    },
-    "bugs": {
-        "email": "aspeling.johan@gmail.com",
-        "url": "https://github.com/JAspeling/ng-form-validator/issues"
-    },
-    "author": {
-        "name": "Johan Aspeling",
-        "email": "aspeling.johan@gmail.com",
-        "url": "https://github.com/JAspeling"
-    },
-    "keywords": [
-        "angular",
-        "validation",
-        "builder",
-        "forms",
-        "form builder"
-    ],
-    "peerDependencies": {
-        "@angular/common": "^10.1.0",
-        "@angular/core": "^10.1.0",
-        "is-what": "4.1.11"
-    },
-    "dependencies": {
-        "tslib": "^2.0.0"
-    }
+  "name": "ng-form-validator-builder",
+  "version": "11.2.19",
+  "description": "Adds easy to use Validators on different base types to be used with angular (reactive) forms",
+  "homepage": "http://jaspeling.github.io/ng-form-validator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JAspeling/ng-form-validator"
+  },
+  "bugs": {
+    "email": "aspeling.johan@gmail.com",
+    "url": "https://github.com/JAspeling/ng-form-validator/issues"
+  },
+  "author": {
+    "name": "Johan Aspeling",
+    "email": "aspeling.johan@gmail.com",
+    "url": "https://github.com/JAspeling"
+  },
+  "keywords": [
+    "angular",
+    "validation",
+    "builder",
+    "forms",
+    "form builder"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^11.0.0",
+    "@angular/core": "^11.0.0",
+    "is-what": "4.1.11"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
 }
