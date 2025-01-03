@@ -23,10 +23,6 @@ describe(`ValidationBuilderBase`, () => {
     validator.baseControl = control();
   }
 
-  beforeAll(() => {
-    console.log('Executing [ValidationBuilder] spec');
-  });
-
   beforeEach(() => {
     reset();
   });
@@ -172,7 +168,7 @@ describe(`ValidationBuilderBase`, () => {
     });
 
     it(`should have a required validator with RequiredValidatorWithGenericMessage`, () => {
-      control().setValidators(GenericValidator.isRequired);
+      control().setValidators(GenericValidator.isRequired());
 
       const result = validator.isRequired().build();
       expect(result).toEqual({ required: 'Required Field' });
