@@ -20,7 +20,8 @@
     ],
     "paths": {
       "@validator-builder": [
-        "dist/ng-form-validator-builder"
+        "dist/ng-form-validator-builder",
+        "projects/ng-form-validator-builder/src/public-api"
       ]
     },
     "useDefineForClassFields": false

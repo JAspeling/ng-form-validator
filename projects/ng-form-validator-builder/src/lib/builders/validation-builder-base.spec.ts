@@ -9,7 +9,7 @@ import { ValidationBuilderBase } from './validation-builder-base';
 
 describe(`ValidationBuilderBase`, () => {
   let formGroup: UntypedFormGroup;
-  let validator: ValidationBuilderBase;
+  let validator: ValidationBuilderBase<unknown>;
 
   function control(): UntypedFormControl {
     return formGroup.get('test') as UntypedFormControl;
@@ -22,10 +22,6 @@ describe(`ValidationBuilderBase`, () => {
     validator = new ValidationBuilderBase();
     validator.baseControl = control();
   }
-
-  beforeAll(() => {
-    console.log('Executing [ValidationBuilder] spec');
-  });
 
   beforeEach(() => {
     reset();
@@ -172,7 +168,7 @@ describe(`ValidationBuilderBase`, () => {
     });
 
     it(`should have a required validator with RequiredValidatorWithGenericMessage`, () => {
-      control().setValidators(GenericValidator.isRequired);
+      control().setValidators(GenericValidator.isRequired());
 
       const result = validator.isRequired().build();
       expect(result).toEqual({ required: 'Required Field' });

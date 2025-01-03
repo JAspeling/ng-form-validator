@@ -1,17 +1,16 @@
 import { ValidationErrors } from '@angular/forms';
 import { isNullOrUndefined, isNumber } from 'is-what';
-import { ValidationBuilderBase } from './validation-builder-base';
 
 import { IValidationBuilder } from './validation-builder.interface';
+import { ValidationBuilder } from './validation-builder';
 
 const MaxSafeNumber: number = 9000000000000000;
 
-export class NumericValidationBuilder implements IValidationBuilder {
-  builder: ValidationBuilderBase;
-  get value(): any {
+export class NumericValidationBuilder implements IValidationBuilder<number> {
+  get value(): number {
     return this.builder.value;
   }
-  set value(val: any) {
+  set value(val: number) {
     if (val !== this.builder.value) {
       this.builder.value = val;
     }
@@ -21,7 +20,7 @@ export class NumericValidationBuilder implements IValidationBuilder {
     return this.builder.baseErrors;
   }
 
-  constructor(builder: ValidationBuilderBase) {
+  constructor(private readonly builder: ValidationBuilder<number>) {
     this.builder = builder;
   }
 
@@ -220,17 +219,12 @@ export class NumericValidationBuilder implements IValidationBuilder {
     return (
       !isNullOrUndefined(this.value) &&
       !isNaN(this.value) &&
-      !this.isDate() &&
       (isNumber(this.value) || isStringNumber)
     );
   }
 
-  private isDate(): boolean {
-    return this.value instanceof Date;
-  }
-
   ifTrue(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: number) => boolean,
     errorKey: string,
     errorMessage: string,
   ): NumericValidationBuilder {
@@ -239,7 +233,7 @@ export class NumericValidationBuilder implements IValidationBuilder {
   }
 
   ifFalse(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: number) => boolean,
     errorKey: string,
     errorMessage: string,
   ): NumericValidationBuilder {
@@ -257,7 +251,7 @@ export class NumericValidationBuilder implements IValidationBuilder {
     return this;
   }
 
-  ignoreWhen(callbackFn: (value: any) => boolean): NumericValidationBuilder {
+  ignoreWhen(callbackFn: (value: number) => boolean): NumericValidationBuilder {
     this.builder.ignoreWhen(callbackFn);
     return this;
   }

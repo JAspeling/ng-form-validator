@@ -4,20 +4,22 @@ import { ValidationBuilder } from './validation-builder';
 import { IValidationBuilder } from './validation-builder.interface';
 import { isNullOrUndefined } from '../utils';
 
-export class StringValidationBuilder implements IValidationBuilder {
+export class StringValidationBuilder
+  implements IValidationBuilder<string>
+{
   get errors(): ValidationErrors {
     return this.builder.baseErrors;
   }
 
-  get value(): any {
+  get value(): string {
     return this.builder.value;
   }
-  set value(val: any) {
+  set value(val: string) {
     if (val !== this.builder.value) {
       this.builder.value = val;
     }
   }
-  constructor(private readonly builder: ValidationBuilder) {}
+  constructor(private readonly builder: ValidationBuilder<string>) {}
 
   public minLengthAllowed(
     min: number,
@@ -91,7 +93,7 @@ export class StringValidationBuilder implements IValidationBuilder {
   }
 
   ifTrue(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: string) => boolean,
     errorKey: string,
     errorMessage: string,
   ): StringValidationBuilder {
@@ -100,7 +102,7 @@ export class StringValidationBuilder implements IValidationBuilder {
   }
 
   ifFalse(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: string) => boolean,
     errorKey: string,
     errorMessage: string,
   ): StringValidationBuilder {
@@ -118,7 +120,7 @@ export class StringValidationBuilder implements IValidationBuilder {
     return this;
   }
 
-  ignoreWhen(callbackFn: (value: any) => boolean): StringValidationBuilder {
+  ignoreWhen(callbackFn: (value: string) => boolean): StringValidationBuilder {
     this.builder.ignoreWhen(callbackFn);
     return this;
   }

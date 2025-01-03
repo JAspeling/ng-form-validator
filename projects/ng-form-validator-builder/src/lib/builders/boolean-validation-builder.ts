@@ -1,29 +1,27 @@
-import { UntypedFormControl, ValidationErrors } from '@angular/forms';
+import { ValidationErrors } from '@angular/forms';
 import { IValidationBuilder } from './validation-builder.interface';
-import { ValidationBuilderBase } from './validation-builder-base';
+import { ValidationBuilder } from './validation-builder';
 
-export class BooleanValidationBuilder implements IValidationBuilder {
+export class BooleanValidationBuilder
+  implements IValidationBuilder<boolean>
+{
   get errors(): ValidationErrors {
     return this.builder.baseErrors;
   }
 
-  get control(): UntypedFormControl {
-    return this.builder.baseControl;
-  }
-
-  get value(): any {
+  get value(): boolean {
     return this.builder.value;
   }
-  set value(val: any) {
+  set value(val: boolean) {
     if (val !== this.builder.value) {
       this.builder.value = val;
     }
   }
 
-  constructor(private readonly builder: ValidationBuilderBase) {}
+  constructor(private readonly builder: ValidationBuilder<boolean>) {}
 
   ifTrue(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: boolean) => boolean,
     errorKey: string,
     errorMessage: string,
   ): BooleanValidationBuilder {
@@ -32,7 +30,7 @@ export class BooleanValidationBuilder implements IValidationBuilder {
   }
 
   ifFalse(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: boolean) => boolean,
     errorKey: string,
     errorMessage: string,
   ): BooleanValidationBuilder {
@@ -50,7 +48,7 @@ export class BooleanValidationBuilder implements IValidationBuilder {
     return this;
   }
 
-  ignoreWhen(callbackFn: (value: any) => boolean): BooleanValidationBuilder {
+  ignoreWhen(callbackFn: (value: boolean) => boolean): BooleanValidationBuilder {
     this.builder.ignoreWhen(callbackFn);
     return this;
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Gumshoe from 'gumshoejs';
 
 @Component({
@@ -7,24 +7,27 @@ import Gumshoe from 'gumshoejs';
   standalone: false,
 })
 export class AppComponent implements OnInit {
-  headings: any[] = [];
-  @ViewChild('container', { static: true }) elementRef: any;
+  headings: {id: string, text: string}[] = [];
+  @ViewChild('container', { static: true }) elementRef: ElementRef<HTMLDivElement>;
 
   ngOnInit(): void {
     this.populateHeadings();
-    this.headings = [...this.elementRef.nativeElement.children]
-      .filter((el) => el.id)
-      .map((el) => ({
-        id: el.id,
-        text: el.innerText,
-      }));
-    console.log(this.headings);
+
     setTimeout(() => {
-      const spy = new Gumshoe('#gumshoe-nav a');
+      new Gumshoe('#gumshoe-nav a');
     });
   }
 
-  populateHeadings(): void {
-    // this.headings = $('h1').toArray().map(el => ({ id: el.id, name: el.innerText }));
+  populateHeadings() {
+    const children = Array.from(this.elementRef.nativeElement.children);
+    const headingElements = children.filter(
+      (child): child is HTMLHeadingElement =>
+        child instanceof HTMLHeadingElement,
+    );
+    this.headings = headingElements.map((heading) => ({
+      id: heading.id,
+      text: heading.innerText,
+    }));
+    console.log(this.headings);
   }
 }
