@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import * as Gumshoe from 'gumshoejs';
+import Gumshoe from 'gumshoejs';
 
 @Component({
   selector: 'app-root',
