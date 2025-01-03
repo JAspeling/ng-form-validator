@@ -15,19 +15,18 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "docs",
             "index": "src/index.html",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@popperjs/core/dist/esm/popper.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords.min.js",
               "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js",
@@ -36,13 +35,15 @@
               "node_modules/prismjs/components/prism-markdown.min.js",
               "node_modules/prismjs/components/prism-typescript.min.js"
             ],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true,
-            "allowedCommonJsDependencies": ["marked", "prismjs"]
+            "allowedCommonJsDependencies": [
+              "marked",
+              "prismjs",
+              "gumshoejs"
+            ]
           },
           "configurations": {
             "production": {
@@ -52,8 +53,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",

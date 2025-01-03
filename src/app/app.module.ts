@@ -8,13 +8,22 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { MarkdownModule, MARKED_OPTIONS, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
+import {
+  MarkdownModule,
+  MARKED_OPTIONS,
+  MarkedOptions,
+  MarkedRenderer,
+} from 'ngx-markdown';
 
 import { AppComponent } from './app.component';
 import { DateModule } from './date/date.module';
@@ -47,10 +56,9 @@ export function markedOptionsFactory(): MarkedOptions {
 
 @NgModule({
   declarations: [AppComponent, ScrollSpyDirective, GumshoeDirective],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
-
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
     MarkdownModule.forRoot({
@@ -60,17 +68,14 @@ export function markedOptionsFactory(): MarkedOptions {
         useFactory: markedOptionsFactory,
       },
     }),
-
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-
     SharedModule,
     DateModule,
     StringModule,
     NumericModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class AppModule {}
