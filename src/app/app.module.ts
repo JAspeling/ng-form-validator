@@ -25,11 +25,14 @@ import {
   ScrollSpyDirective,
 } from './shared/scrollspy.directive';
 import { NumericModule } from './numeric/numeric.module';
+// import { Tokens } from 'marked';
 
 // function that returns `MarkedOptions` with renderer override
 export function markedOptionsFactory(): MarkedOptions {
   const renderer = new MarkedRenderer();
 
+  // renderer.blockquote = ({ tokens }: Tokens.Blockquote) =>
+  //   `<blockquote class="blockquote"><p>' + ${tokens.join('')} + '</p></blockquote>`;
   renderer.blockquote = (text: string) => {
     return '<blockquote class="blockquote"><p>' + text + '</p></blockquote>';
   };
@@ -39,8 +42,6 @@ export function markedOptionsFactory(): MarkedOptions {
     gfm: true,
     breaks: false,
     pedantic: false,
-    smartLists: true,
-    smartypants: false,
   };
 }
 
