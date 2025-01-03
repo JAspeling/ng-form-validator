@@ -5,6 +5,7 @@ import { MyStringValidator } from '../custom-string-validator';
 @Component({
   selector: 'app-extending-string-demo',
   templateUrl: './extending-string-demo.component.html',
+  standalone: false,
 })
 export class ExtendingStringDemoComponent implements OnInit {
   form: UntypedFormGroup;

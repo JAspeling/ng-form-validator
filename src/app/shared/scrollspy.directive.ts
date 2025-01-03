@@ -13,6 +13,7 @@ import {
 
 @Directive({
   selector: '[scrollSpy]',
+  standalone: false,
 })
 export class ScrollSpyDirective {
   @Input() public spiedTags = [];
@@ -46,6 +47,7 @@ export class ScrollSpyDirective {
 
 @Directive({
   selector: '[gumshoe]',
+  standalone: false,
 })
 export class GumshoeDirective implements OnChanges {
   @Input('gumshoe') currentSection: string;

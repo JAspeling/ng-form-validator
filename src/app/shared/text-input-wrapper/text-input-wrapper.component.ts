@@ -13,6 +13,7 @@ import { Guid } from '../guid';
 @Component({
   selector: 'app-text-input-wrapper',
   templateUrl: './text-input-wrapper.component.html',
+  standalone: false,
 })
 export class TextInputWrapperComponent implements OnInit {
   faChevronDown = faChevronDown;

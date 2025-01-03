@@ -7,6 +7,7 @@ import { DateValidator } from '@validator-builder';
 @Component({
   selector: 'app-date-demo',
   templateUrl: './date-demo.component.html',
+  standalone: false,
 })
 export class DateDemoComponent implements OnInit {
   dateForm: UntypedFormGroup;

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-extending-string-demo-code',
   templateUrl: './extending-string-demo-code.component.html',
   styleUrls: ['./extending-string-demo-code.component.scss'],
+  standalone: false,
 })
 export class ExtendingStringDemoCodeComponent implements OnInit {
   constructor() {}

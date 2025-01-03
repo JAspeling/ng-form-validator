@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import 'bootstrap/scss/bootstrap.scss';
+@use 'bootstrap/scss/bootstrap.scss' as *;
+@use 'bootstrap/scss/mixins';
+//@import './assets/styles/prism/vscode';
+@use './assets/styles/prism/vs';
 
 // @import 'font-awesome/scss/font-awesome.scss';
 // @import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
@@ -10,12 +13,13 @@
 // @import 'prismjs/themes/prism.css';
 @import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
-//@import './assets/styles/prism/vscode';
-@import './assets/styles/prism/vs';
-
 html {
   overflow-y: auto;
   scroll-behavior: smooth;
+}
+
+markdown > * {
+  max-width: 576px;
 }
 
 $gumshoe-width: 200px;
@@ -24,9 +28,6 @@ $gumshoe-width: 200px;
   #gumshoe-nav {
     display: block !important;
   }
-}
-markdown > * {
-  max-width: 576px;
 }
 
 @include media-breakpoint-up(sm) {
@@ -143,8 +144,12 @@ blockquote {
   border-radius: 4px;
   color: #666;
   margin: 20px 0;
-  padding: 1px 20px;
+  padding: 1rem;
   font-size: 1rem !important;
+
+  p:last-of-type {
+    margin: 0;
+  }
 }
 
 accordion-group {

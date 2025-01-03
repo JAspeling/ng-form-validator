@@ -5,6 +5,7 @@ import { NumericValidator } from '@validator-builder';
 @Component({
   selector: 'app-numeric-demo',
   templateUrl: './numeric-demo.component.html',
+  standalone: false,
 })
 export class NumericDemoComponent implements OnInit {
   form: UntypedFormGroup;

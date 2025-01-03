@@ -19,10 +19,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import {
-  MarkdownModule,
-  MARKED_OPTIONS,
-  MarkedOptions,
-  MarkedRenderer,
+  MarkdownModule
 } from 'ngx-markdown';
 
 import { AppComponent } from './app.component';
@@ -34,25 +31,6 @@ import {
 } from './shared/scrollspy.directive';
 import { SharedModule } from './shared/shared.module';
 import { StringModule } from './string/string.module';
-// import { Tokens } from 'marked';
-
-// function that returns `MarkedOptions` with renderer override
-export function markedOptionsFactory(): MarkedOptions {
-  const renderer = new MarkedRenderer();
-
-  // renderer.blockquote = ({ tokens }: Tokens.Blockquote) =>
-  //   `<blockquote class="blockquote"><p>' + ${tokens.join('')} + '</p></blockquote>`;
-  renderer.blockquote = (text: string) => {
-    return '<blockquote class="blockquote"><p>' + text + '</p></blockquote>';
-  };
-
-  return {
-    renderer,
-    gfm: true,
-    breaks: false,
-    pedantic: false,
-  };
-}
 
 @NgModule({
   declarations: [AppComponent, ScrollSpyDirective, GumshoeDirective],
@@ -62,11 +40,7 @@ export function markedOptionsFactory(): MarkedOptions {
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
     MarkdownModule.forRoot({
-      loader: HttpClient,
-      markedOptions: {
-        provide: MARKED_OPTIONS,
-        useFactory: markedOptionsFactory,
-      },
+      loader: HttpClient
     }),
     CommonModule,
     FormsModule,

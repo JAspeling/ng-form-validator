@@ -4,6 +4,7 @@ import Gumshoe from 'gumshoejs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  standalone: false,
 })
 export class AppComponent implements OnInit {
   headings: any[] = [];

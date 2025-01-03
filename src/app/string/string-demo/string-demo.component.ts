@@ -5,6 +5,7 @@ import { StringValidator } from '@validator-builder';
 @Component({
   selector: 'app-string-demo',
   templateUrl: './string-demo.component.html',
+  standalone: false,
 })
 export class StringDemoComponent implements OnInit {
   form: UntypedFormGroup;

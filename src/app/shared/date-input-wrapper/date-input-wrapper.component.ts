@@ -16,6 +16,7 @@ import { Guid } from '../guid';
 @Component({
   selector: 'app-date-input-wrapper',
   templateUrl: './date-input-wrapper.component.html',
+  standalone: false,
 })
 export class DateInputWrapperComponent implements OnInit {
   faChevronDown = faChevronDown;
