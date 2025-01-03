@@ -1,4 +1,4 @@
-import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UntypedFormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 import { ValidationBuilder } from '../builders/validation-builder';
 
@@ -8,7 +8,7 @@ export class StringValidator {
     upperRange: number,
     errorMessage?: string,
   ): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).string
         .range(lowerRange, upperRange, errorMessage)
         .build();
@@ -19,7 +19,7 @@ export class StringValidator {
     max: number,
     errorMessage?: string,
   ): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).string
         .maxLengthAllowed(max, errorMessage)
         .build();
@@ -30,7 +30,7 @@ export class StringValidator {
     min: number,
     errorMessage?: string,
   ): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).string
         .minLengthAllowed(min, errorMessage)
         .build();
@@ -38,7 +38,7 @@ export class StringValidator {
   }
 
   public static email(errorMessage?: string): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).string
         .regex(
           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -49,7 +49,7 @@ export class StringValidator {
   }
 
   public static regex(regex: RegExp, errorMessage?: string): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).string
         .regex(regex, errorMessage)
         .build();

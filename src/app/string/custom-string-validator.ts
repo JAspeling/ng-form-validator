@@ -1,9 +1,9 @@
 import { StringValidator, ValidationBuilder } from '@validator-builder';
-import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UntypedFormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export class MyStringValidator extends StringValidator {
   static cannotBe(exclusion: string, errorMessage?: string): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).string
         .ifTrue(
           (val) => val === exclusion,
@@ -18,7 +18,7 @@ export class MyStringValidator extends StringValidator {
     exclusion: string,
     errorMessage?: string,
   ): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).string
         .minLengthAllowed(6, 'Password needs to be longer than 6 characters')
         .maxLengthAllowed(15, 'Password cannot be longer than 15 characters')

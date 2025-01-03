@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { faPooStorm, faRedo, faUndo } from '@fortawesome/free-solid-svg-icons';
 
 import { DateValidator } from '@validator-builder';
@@ -9,7 +9,7 @@ import { DateValidator } from '@validator-builder';
   templateUrl: './date-demo.component.html',
 })
 export class DateDemoComponent implements OnInit {
-  dateForm: FormGroup;
+  dateForm: UntypedFormGroup;
   date2Actions: any[] = [
     {
       action: () => {
@@ -114,7 +114,7 @@ export class DateDemoComponent implements OnInit {
     previousWeek.setDate(new Date().getDate() - 7);
     nextWeek.setDate(new Date().getDate() + 7);
 
-    this.dateForm = new FormBuilder().group({
+    this.dateForm = new UntypedFormBuilder().group({
       date1: [today],
       date2: [today, DateValidator.isValid()],
       date3: [today, DateValidator.notInThePast()],

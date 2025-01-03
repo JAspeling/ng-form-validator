@@ -1,22 +1,22 @@
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { GenericValidator } from '../validators/generic-validator';
 import { ValidationBuilderBase } from './validation-builder-base';
 
 describe(`ValidationBuilderBase`, () => {
-  let formGroup: FormGroup;
+  let formGroup: UntypedFormGroup;
   let validator: ValidationBuilderBase;
 
-  function control(): FormControl {
-    return formGroup.get('test') as FormControl;
+  function control(): UntypedFormControl {
+    return formGroup.get('test') as UntypedFormControl;
   }
 
   function reset(): void {
-    formGroup = new FormBuilder().group({
+    formGroup = new UntypedFormBuilder().group({
       test: [null],
     });
     validator = new ValidationBuilderBase();

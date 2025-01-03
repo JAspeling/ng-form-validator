@@ -1,4 +1,4 @@
-import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UntypedFormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 import { ValidationBuilder } from '../builders/validation-builder';
 
@@ -8,7 +8,7 @@ export class NumericValidator {
     maxLength: number,
     errorMessage?: string,
   ): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber(errorMessage)
         .minValueAllowed(minLength, errorMessage)
@@ -18,7 +18,7 @@ export class NumericValidator {
   }
 
   public static greaterThanZero(errorMessage?: string): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber(errorMessage)
         .greaterThanZero(errorMessage)
@@ -28,7 +28,7 @@ export class NumericValidator {
   }
 
   public static greaterThanOrEqualToZero(errorMessage?: string): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber(errorMessage)
         .greaterThanOrEqualTo(0, errorMessage)
@@ -38,7 +38,7 @@ export class NumericValidator {
   }
 
   public static lessThanMax(errorMessage?: string): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber(errorMessage)
         .lessThanMax(errorMessage)
@@ -50,7 +50,7 @@ export class NumericValidator {
     maxLength: number,
     errorMessage?: string,
   ): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber(errorMessage)
         .lessThanMax(errorMessage)
@@ -63,7 +63,7 @@ export class NumericValidator {
     maxLength: number,
     errorMessage?: string,
   ): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber(errorMessage)
         .lessThanMax(errorMessage)
@@ -76,7 +76,7 @@ export class NumericValidator {
     minLength: number,
     errorMessage?: string,
   ): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber(errorMessage)
         .lessThanMax(errorMessage)
@@ -89,7 +89,7 @@ export class NumericValidator {
     minLength: number,
     errorMessage?: string,
   ): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber(errorMessage)
         .lessThanMax(errorMessage)
@@ -99,7 +99,7 @@ export class NumericValidator {
   }
 
   public static isInteger(errorMessage?: string): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber(errorMessage)
         .isInteger(errorMessage)

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { StringValidator } from '@validator-builder';
 
 @Component({
@@ -7,7 +7,7 @@ import { StringValidator } from '@validator-builder';
   templateUrl: './string-demo.component.html',
 })
 export class StringDemoComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor() {}
 
@@ -16,7 +16,7 @@ export class StringDemoComponent implements OnInit {
   }
 
   private initializeDateForm(): void {
-    this.form = new FormBuilder().group({
+    this.form = new UntypedFormBuilder().group({
       email: ['', StringValidator.email('Invalid email!')],
       regex: [
         '',

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownService } from 'ngx-markdown';
 
@@ -20,7 +20,7 @@ export class TextInputWrapperComponent implements OnInit {
 
   id: string = Guid.newGuid();
 
-  @Input() form: FormGroup;
+  @Input() form: UntypedFormGroup;
   @Input() name: string;
   @Input() label: string;
   @Input() markdownSrc: string;
