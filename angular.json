@@ -15,15 +15,14 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
-            "outputPath": {
-              "base": "docs"
-            },
+            "outputPath": "docs",
             "index": "src/index.html",
             "polyfills": [
               "src/polyfills.ts"
             ],
+            "main": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
@@ -43,8 +42,7 @@
             "allowedCommonJsDependencies": [
               "marked",
               "prismjs"
-            ],
-            "browser": "src/main.ts"
+            ]
           },
           "configurations": {
             "production": {
