@@ -14,17 +14,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
+import { MarkdownModule, MARKED_OPTIONS, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 
 import { AppComponent } from './app.component';
 import { DateModule } from './date/date.module';
-import { SharedModule } from './shared/shared.module';
-import { StringModule } from './string/string.module';
+import { NumericModule } from './numeric/numeric.module';
 import {
   GumshoeDirective,
   ScrollSpyDirective,
 } from './shared/scrollspy.directive';
-import { NumericModule } from './numeric/numeric.module';
+import { SharedModule } from './shared/shared.module';
+import { StringModule } from './string/string.module';
 // import { Tokens } from 'marked';
 
 // function that returns `MarkedOptions` with renderer override
@@ -56,7 +56,7 @@ export function markedOptionsFactory(): MarkedOptions {
     MarkdownModule.forRoot({
       loader: HttpClient,
       markedOptions: {
-        provide: MarkedOptions,
+        provide: MARKED_OPTIONS,
         useFactory: markedOptionsFactory,
       },
     }),
