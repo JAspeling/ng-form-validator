@@ -18,7 +18,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "docs",
-            "baseHref": "https://JAspeling.github.io/ng-form-validator/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -29,7 +28,6 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/@popperjs/core/dist/esm/popper.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
-              "node_modules/marked/lib/marked.js",
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/plugins/highlight-keywords/prism-highlight-keywords.min.js",
               "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js",
@@ -43,10 +41,12 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "allowedCommonJsDependencies": ["marked", "prismjs"]
           },
           "configurations": {
             "production": {
+              "baseHref": "https://JAspeling.github.io/ng-form-validator/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -73,8 +73,6 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-          },
           "configurations": {
             "production": {
               "browserTarget": "ng-form-validator:build:production"
