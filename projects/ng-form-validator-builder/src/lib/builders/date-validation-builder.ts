@@ -1,4 +1,4 @@
-import { FormControl, ValidationErrors } from '@angular/forms';
+import { UntypedFormControl, ValidationErrors } from '@angular/forms';
 
 import { IValidationBuilder } from './validation-builder.interface';
 import { isDate } from 'is-what';
@@ -10,7 +10,7 @@ export class DateValidationBuilder implements IValidationBuilder {
     return this.builder.baseErrors;
   }
 
-  get control(): FormControl {
+  get control(): UntypedFormControl {
     return this.builder.baseControl;
   }
 

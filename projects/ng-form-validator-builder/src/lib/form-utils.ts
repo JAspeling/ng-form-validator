@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup, ValidationErrors } from '@angular/forms';
 
 import { isEmptyObject, isNullOrUndefined } from './utils';
 
@@ -134,9 +134,9 @@ function assertError(
  * Marks the whole form group (Including its sub-groups) as touched.
  * @param formGroup The form group under question.
  */
-export function markAsTouchDeep(formGroup: FormGroup | AbstractControl): void {
+export function markAsTouchDeep(formGroup: UntypedFormGroup | AbstractControl): void {
   (<any>Object)
-    .values((formGroup as FormGroup).controls)
+    .values((formGroup as UntypedFormGroup).controls)
     .forEach((control: AbstractControl) => {
       control.markAsTouched();
 

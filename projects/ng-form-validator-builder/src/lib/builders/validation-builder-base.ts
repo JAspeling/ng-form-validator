@@ -1,4 +1,4 @@
-import { FormControl, ValidationErrors, Validators } from '@angular/forms';
+import { UntypedFormControl, ValidationErrors, Validators } from '@angular/forms';
 
 import { addErrorsToControl } from '../form-utils';
 import {
@@ -11,7 +11,7 @@ import { IValidationBuilder } from './validation-builder-base.interface';
 
 export class ValidationBuilderBase implements IValidationBuilder {
   baseErrors: ValidationErrors = {};
-  baseControl: FormControl;
+  baseControl: UntypedFormControl;
   ignore: boolean = false;
 
   // This value can be changed in the builder chain,

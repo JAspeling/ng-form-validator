@@ -1,4 +1,4 @@
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { DateValidationBuilder } from './date-validation-builder';
 import { NumericValidationBuilder } from './numeric-validation-builder';
@@ -28,7 +28,7 @@ export class ValidationBuilder
     return new BooleanValidationBuilder(this);
   }
 
-  constructor(control: FormControl) {
+  constructor(control: UntypedFormControl) {
     super();
     this.baseControl = control;
   }

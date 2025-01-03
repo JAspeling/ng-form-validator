@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { NumericValidator } from '@validator-builder';
 
 @Component({
@@ -7,7 +7,7 @@ import { NumericValidator } from '@validator-builder';
   templateUrl: './numeric-demo.component.html',
 })
 export class NumericDemoComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor() {}
 
@@ -16,7 +16,7 @@ export class NumericDemoComponent implements OnInit {
   }
 
   private initializeDateForm(): void {
-    this.form = new FormBuilder().group({
+    this.form = new UntypedFormBuilder().group({
       greaterThanZero: [
         '',
         NumericValidator.greaterThanZero('Must be greater than zero.'),

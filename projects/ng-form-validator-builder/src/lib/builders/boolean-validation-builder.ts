@@ -1,4 +1,4 @@
-import { FormControl, ValidationErrors } from '@angular/forms';
+import { UntypedFormControl, ValidationErrors } from '@angular/forms';
 import { IValidationBuilder } from './validation-builder.interface';
 import { ValidationBuilderBase } from './validation-builder-base';
 
@@ -7,7 +7,7 @@ export class BooleanValidationBuilder implements IValidationBuilder {
     return this.builder.baseErrors;
   }
 
-  get control(): FormControl {
+  get control(): UntypedFormControl {
     return this.builder.baseControl;
   }
 

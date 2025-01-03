@@ -1,11 +1,11 @@
-import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UntypedFormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 import { ValidationBuilder } from '../builders/validation-builder';
 import { isNullOrUndefined } from '../utils';
 
 export class PercentageValidator {
   public static isPositiveOrNullValue(): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .ignoreWhen((val) => isNullOrUndefined(val))
         .isValidNumber()
@@ -17,7 +17,7 @@ export class PercentageValidator {
   }
 
   public static isValid(minRange: number, maxRange: number): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber()
         .minValueAllowed(minRange)
@@ -28,7 +28,7 @@ export class PercentageValidator {
   }
 
   public static isPositive(): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber()
         .minValueAllowed(0)
@@ -39,7 +39,7 @@ export class PercentageValidator {
   }
 
   public static greaterThanZero(): ValidatorFn {
-    return (control: FormControl): ValidationErrors => {
+    return (control: UntypedFormControl): ValidationErrors => {
       return new ValidationBuilder(control).numeric
         .isValidNumber()
         .maxValueAllowed(100)
