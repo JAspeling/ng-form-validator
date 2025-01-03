@@ -9,16 +9,18 @@ import {
 } from '../utils';
 import { IValidationBuilder } from './validation-builder-base.interface';
 
-export class ValidationBuilderBase implements IValidationBuilder {
+export class ValidationBuilderBase<T>
+  implements IValidationBuilder<T>
+{
   baseErrors: ValidationErrors = {};
   baseControl: UntypedFormControl;
   ignore: boolean = false;
 
   // This value can be changed in the builder chain,
   // but it should never change the actual value of the FormControl.
-  value: any;
+  value: T;
 
-  get controlValue(): any {
+  get controlValue(): T {
     return isNullOrUndefined(this.baseControl) ? null : this.baseControl.value;
   }
 
@@ -27,10 +29,10 @@ export class ValidationBuilderBase implements IValidationBuilder {
   }
 
   public ifTrue(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: T) => boolean,
     errorKey: string,
     errorMessage: string,
-  ): IValidationBuilder {
+  ): IValidationBuilder<T> {
     if (this.ignore) {
       return this;
     }
@@ -43,10 +45,10 @@ export class ValidationBuilderBase implements IValidationBuilder {
   }
 
   public ifFalse(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: T) => boolean,
     errorKey: string,
     errorMessage: string,
-  ): IValidationBuilder {
+  ): IValidationBuilder<T> {
     if (this.ignore) {
       return this;
     }
@@ -58,7 +60,7 @@ export class ValidationBuilderBase implements IValidationBuilder {
     return this;
   }
 
-  public isRequired(errorMessage?: string): IValidationBuilder {
+  public isRequired(errorMessage?: string): IValidationBuilder<T> {
     if (this.ignore) {
       return this;
     }
@@ -77,7 +79,7 @@ export class ValidationBuilderBase implements IValidationBuilder {
     return this;
   }
 
-  public withMessage(message: string, property?: string): IValidationBuilder {
+  public withMessage(message: string, property?: string): IValidationBuilder<T> {
     // don't add a message if there are not errors - no validations failed.
     if (isEmptyObject(this.baseErrors) || isNullOrWhitespace(message)) {
       return this;
@@ -89,7 +91,7 @@ export class ValidationBuilderBase implements IValidationBuilder {
     return this;
   }
 
-  public ignoreWhen(callbackFn: (value: any) => boolean): IValidationBuilder {
+  public ignoreWhen(callbackFn: (value: T) => boolean): IValidationBuilder<T> {
     if (this.ignore) {
       return this;
     }
@@ -100,7 +102,7 @@ export class ValidationBuilderBase implements IValidationBuilder {
     return this;
   }
 
-  public addErrors(): IValidationBuilder {
+  public addErrors(): IValidationBuilder<T> {
     addErrorsToControl(this.baseControl, this.build());
 
     return this;

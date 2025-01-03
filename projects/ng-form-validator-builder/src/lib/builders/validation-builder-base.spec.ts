@@ -9,7 +9,7 @@ import { ValidationBuilderBase } from './validation-builder-base';
 
 describe(`ValidationBuilderBase`, () => {
   let formGroup: UntypedFormGroup;
-  let validator: ValidationBuilderBase;
+  let validator: ValidationBuilderBase<unknown>;
 
   function control(): UntypedFormControl {
     return formGroup.get('test') as UntypedFormControl;

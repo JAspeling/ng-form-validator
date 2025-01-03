@@ -2,10 +2,10 @@ import { UntypedFormControl, ValidationErrors } from '@angular/forms';
 
 import { IValidationBuilder } from './validation-builder.interface';
 import { isDate } from 'is-what';
-import { ValidationBuilderBase } from './validation-builder-base';
 import { dateIsInThePast } from '../utils';
+import { ValidationBuilder } from './validation-builder';
 
-export class DateValidationBuilder implements IValidationBuilder {
+export class DateValidationBuilder implements IValidationBuilder<Date> {
   get errors(): ValidationErrors {
     return this.builder.baseErrors;
   }
@@ -14,16 +14,16 @@ export class DateValidationBuilder implements IValidationBuilder {
     return this.builder.baseControl;
   }
 
-  get value(): any {
+  get value(): Date {
     return this.builder.value;
   }
-  set value(val: any) {
+  set value(val: Date) {
     if (val !== this.builder.value) {
       this.builder.value = val;
     }
   }
 
-  constructor(private readonly builder: ValidationBuilderBase) {}
+  constructor(private readonly builder: ValidationBuilder<Date>) {}
 
   public isValidDate(errorMessage?: string): DateValidationBuilder {
     errorMessage = errorMessage || 'A valid date value is required';
@@ -70,7 +70,7 @@ export class DateValidationBuilder implements IValidationBuilder {
   }
 
   ifTrue(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: Date) => boolean,
     errorKey: string,
     errorMessage: string,
   ): DateValidationBuilder {
@@ -79,7 +79,7 @@ export class DateValidationBuilder implements IValidationBuilder {
   }
 
   ifFalse(
-    callbackFn: (value: any) => boolean,
+    callbackFn: (value: Date) => boolean,
     errorKey: string,
     errorMessage: string,
   ): DateValidationBuilder {
@@ -97,7 +97,7 @@ export class DateValidationBuilder implements IValidationBuilder {
     return this;
   }
 
-  ignoreWhen(callbackFn: (value: any) => boolean): DateValidationBuilder {
+  ignoreWhen(callbackFn: (value: Date) => boolean): DateValidationBuilder {
     this.builder.ignoreWhen(callbackFn);
     return this;
   }

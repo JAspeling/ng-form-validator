@@ -7,25 +7,25 @@ import { ValidationBuilderBase } from './validation-builder-base';
 import { IValidationBuilder } from './validation-builder.interface';
 import { BooleanValidationBuilder } from './boolean-validation-builder';
 
-export class ValidationBuilder
-  extends ValidationBuilderBase
-  implements IValidationBuilder
+export class ValidationBuilder<T>
+  extends ValidationBuilderBase<T>
+  implements IValidationBuilder<T>
 {
   get numeric(): NumericValidationBuilder {
     super.initialize();
-    return new NumericValidationBuilder(this);
+    return new NumericValidationBuilder(this as ValidationBuilder<number>);
   }
   get string(): StringValidationBuilder {
     super.initialize();
-    return new StringValidationBuilder(this);
+    return new StringValidationBuilder(this as ValidationBuilder<string>);
   }
   get date(): DateValidationBuilder {
     super.initialize();
-    return new DateValidationBuilder(this);
+    return new DateValidationBuilder(this as ValidationBuilder<Date>);
   }
   get boolean(): BooleanValidationBuilder {
     super.initialize();
-    return new BooleanValidationBuilder(this);
+    return new BooleanValidationBuilder(this as ValidationBuilder<boolean>);
   }
 
   constructor(control: UntypedFormControl) {
